@@ -1,0 +1,130 @@
+23623 1532374699.915703 execve("/usr/bin/docker-containerd-shim", ["docker-containerd-shim", "3472659a5792625cb352956f73b0ab01"..., "/var/run/docker/libcontainerd/34"..., "docker-runc"], [/* 5 vars */]) = 0 <0.000405>
+23694 1532374699.934231 execve("/usr/bin/docker-runc", ["docker-runc", "--log", "/run/docker/libcontainerd/contai"..., "--log-format", "json", "create", "--bundle", "/var/run/docker/libcontainerd/34"..., "--console", "", "--pid-file", "/run/docker/libcontainerd/contai"..., "3472659a5792625cb352956f73b0ab01"...], [/* 5 vars */]) = 0 <0.000165>
+23694 1532374699.940022 socket(PF_INET, SOCK_STREAM, IPPROTO_TCP) = 3 <0.000020>
+23694 1532374699.940096 socket(PF_INET6, SOCK_STREAM, IPPROTO_TCP) = 3 <0.000011>
+23694 1532374699.940171 socket(PF_INET6, SOCK_STREAM, IPPROTO_TCP) = 4 <0.000010>
+23717 1532374699.950492 execve("/proc/self/exe", ["/proc/self/exe", "init"], [/* 3 vars */]) = 0 <0.000140>
+23718 1532374699.953459 +++ exited with 0 +++
+23716 1532374699.953482 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23718, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+23717 1532374699.953496 +++ exited with 0 +++
+23694 1532374699.953517 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23717, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+23720 1532374699.959623 socket(PF_INET, SOCK_STREAM, IPPROTO_TCP) = 7 <0.000012>
+23720 1532374699.959689 socket(PF_INET6, SOCK_STREAM, IPPROTO_TCP) = 7 <0.000010>
+23720 1532374699.959748 socket(PF_INET6, SOCK_STREAM, IPPROTO_TCP) = 8 <0.000009>
+23720 1532374699.982111 socket(PF_NETLINK, SOCK_RAW, NETLINK_ROUTE) = 8 <0.000009>
+23720 1532374699.982159 sendto(8, "(\0\0\0\22\0\5\0\1\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 40, 0, {sa_family=AF_NETLINK, pid=0, groups=00000000}, 12) = 40 <0.000018>
+23720 1532374699.982261 socket(PF_NETLINK, SOCK_RAW, NETLINK_ROUTE) = 8 <0.000009>
+23720 1532374699.982299 sendto(8, " \0\0\0\20\0\5\0\2\0\0\0\0\0\0\0\0\0\0\0\1\0\0\0\1\0\0\0\1\0\0\0", 32, 0, {sa_family=AF_NETLINK, pid=0, groups=00000000}, 12) = 32 <0.000088>
+23726 1532374699.989943 execve("/usr/bin/dockerd", ["libnetwork-setkey", "3472659a5792625cb352956f73b0ab01"..., "5fe9b02fdf83c72e7ddcd381268000d3"...], [/* 5 vars */]) = 0 <0.000163>
+23726 1532374699.998248 socket(PF_INET, SOCK_STREAM, IPPROTO_TCP) = 3 <0.000014>
+23726 1532374699.998304 socket(PF_INET6, SOCK_STREAM, IPPROTO_TCP) = 3 <0.000011>
+23726 1532374699.998368 socket(PF_INET6, SOCK_STREAM, IPPROTO_TCP) = 4 <0.000010>
+23726 1532374700.008529 socket(PF_LOCAL, SOCK_DGRAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 3 <0.000013>
+23726 1532374700.014723 socket(PF_LOCAL, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 6 <0.000012>
+23740 1532374700.056994 +++ exited with 0 +++
+23739 1532374700.057005 +++ exited with 0 +++
+23738 1532374700.057010 +++ exited with 0 +++
+23737 1532374700.057014 +++ exited with 0 +++
+23736 1532374700.057018 +++ exited with 0 +++
+23735 1532374700.057022 +++ exited with 0 +++
+23734 1532374700.057027 +++ exited with 0 +++
+23733 1532374700.057031 +++ exited with 0 +++
+23732 1532374700.057035 +++ exited with 0 +++
+23731 1532374700.057039 +++ exited with 0 +++
+23730 1532374700.057043 +++ exited with 0 +++
+23729 1532374700.057048 +++ exited with 0 +++
+23726 1532374700.057621 +++ exited with 0 +++
+23727 1532374700.057637 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23726, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+23727 1532374700.106917 +++ exited with 0 +++
+23728 1532374700.106955 +++ exited with 0 +++
+23716 1532374700.106960 +++ exited with 0 +++
+23715 1532374700.106964 +++ exited with 0 +++
+23713 1532374700.106968 +++ exited with 0 +++
+23711 1532374700.106973 +++ exited with 0 +++
+23710 1532374700.106977 +++ exited with 0 +++
+23694 1532374700.107271 +++ exited with 0 +++
+23623 1532374700.107291 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23718, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+23744 1532374700.117238 execve("/usr/bin/docker-runc", ["docker-runc", "start", "3472659a5792625cb352956f73b0ab01"...], [/* 5 vars */]) = 0 <0.000243>
+23744 1532374700.122062 socket(PF_INET, SOCK_STREAM, IPPROTO_TCP) = 3 <0.000012>
+23744 1532374700.122121 socket(PF_INET6, SOCK_STREAM, IPPROTO_TCP) = 3 <0.000009>
+23744 1532374700.122177 socket(PF_INET6, SOCK_STREAM, IPPROTO_TCP) = 4 <0.000008>
+23720 1532374700.127719 execve("/start.sh", ["/start.sh", "-c", "5", "216.58.216.142"], [/* 3 vars */] <unfinished ...>
+23724 1532374700.128115 +++ exited with 0 +++
+23725 1532374700.128127 +++ exited with 0 +++
+23723 1532374700.128136 +++ exited with 0 +++
+23722 1532374700.128141 +++ exited with 0 +++
+23721 1532374700.128146 +++ exited with 0 +++
+23720 1532374700.128437 <... execve resumed> ) = 0 <0.000697>
+23745 1532374700.128524 +++ exited with 0 +++
+23749 1532374700.128529 +++ exited with 0 +++
+23748 1532374700.128533 +++ exited with 0 +++
+23747 1532374700.128537 +++ exited with 0 +++
+23746 1532374700.128720 +++ exited with 0 +++
+23744 1532374700.128741 +++ exited with 0 +++
+7098  1532374700.128761 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23744, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+23720 1532374700.130223 socket(PF_LOCAL, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 3 <0.000011>
+23720 1532374700.130318 socket(PF_LOCAL, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 3 <0.000007>
+23752 1532374700.132690 execve("/usr/bin/ping", ["ping", "-c", "5", "216.58.216.142"], [/* 6 vars */]) = 0 <0.000167>
+23752 1532374700.134933 socket(PF_INET, SOCK_DGRAM, IPPROTO_ICMP) = -1 EACCES (Permission denied) <0.000012>
+23752 1532374700.134968 socket(PF_INET, SOCK_RAW, IPPROTO_ICMP) = 3 <0.000009>
+23752 1532374700.135000 socket(PF_INET6, SOCK_DGRAM, IPPROTO_ICMPV6) = -1 EACCES (Permission denied) <0.000009>
+23752 1532374700.135031 socket(PF_INET6, SOCK_RAW, IPPROTO_ICMPV6) = 4 <0.000009>
+23752 1532374700.135121 socket(PF_INET, SOCK_DGRAM, IPPROTO_IP) = 5 <0.000009>
+23752 1532374700.135444 sendto(3, "\10\0&\212\0\7\0\1\254.V[\0\0\0\0\16\21\2\0\0\0\0\0\20\21\22\23\24\25\26\27"..., 64, 0, {sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, 16) = 64 <0.000066>
+23752 1532374700.135533 recvmsg(3, {msg_name(16)={sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, msg_iov(1)=[{"E\0\0T\0\0\0\0005\1(\315\330:\330\216\254\21\0\2\0\0.\212\0\7\0\1\254.V["..., 192}], msg_controllen=32, [{cmsg_len=32, cmsg_level=SOL_SOCKET, cmsg_type=0x1d /* SCM_??? */}], msg_flags=0}, 0) = 84 <0.029790>
+23752 1532374701.137467 sendto(3, "\10\0C\201\0\7\0\2\255.V[\0\0\0\0\360\30\2\0\0\0\0\0\20\21\22\23\24\25\26\27"..., 64, 0, {sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, 16) = 64 <0.000052>
+23752 1532374701.137553 recvmsg(3, {msg_name(16)={sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, msg_iov(1)=[{"E\0\0T\0\0\0\0005\1(\315\330:\330\216\254\21\0\2\0\0K\201\0\7\0\2\255.V["..., 192}], msg_controllen=32, [{cmsg_len=32, cmsg_level=SOL_SOCKET, cmsg_type=0x1d /* SCM_??? */}], msg_flags=0}, 0) = 84 <0.029845>
+23752 1532374702.138668 sendto(3, "\10\0\230{\0\7\0\3\256.V[\0\0\0\0\232\35\2\0\0\0\0\0\20\21\22\23\24\25\26\27"..., 64, 0, {sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, 16) = 64 <0.000068>
+23752 1532374702.138790 recvmsg(3, {msg_name(16)={sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, msg_iov(1)=[{"E\0\0T\0\0\0\0005\1(\315\330:\330\216\254\21\0\2\0\0\240{\0\7\0\3\256.V["..., 192}], msg_controllen=32, [{cmsg_len=32, cmsg_level=SOL_SOCKET, cmsg_type=0x1d /* SCM_??? */}], msg_flags=0}, 0) = 84 <0.029844>
+23752 1532374703.139904 sendto(3, "\10\0\306u\0\7\0\4\257.V[\0\0\0\0k\"\2\0\0\0\0\0\20\21\22\23\24\25\26\27"..., 64, 0, {sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, 16) = 64 <0.000058>
+23752 1532374703.140029 recvmsg(3, {msg_name(16)={sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, msg_iov(1)=[{"E\0\0T\0\0\0\0005\1(\315\330:\330\216\254\21\0\2\0\0\316u\0\7\0\4\257.V["..., 192}], msg_controllen=32, [{cmsg_len=32, cmsg_level=SOL_SOCKET, cmsg_type=0x1d /* SCM_??? */}], msg_flags=0}, 0) = 84 <0.029820>
+23752 1532374704.141059 sendto(3, "\10\0?p\0\7\0\5\260.V[\0\0\0\0\361&\2\0\0\0\0\0\20\21\22\23\24\25\26\27"..., 64, 0, {sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, 16) = 64 <0.000059>
+23752 1532374704.141231 recvmsg(3, {msg_name(16)={sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, msg_iov(1)=[{"E\0\0T\0\0\0\0005\1(\315\330:\330\216\254\21\0\2\0\0Gp\0\7\0\5\260.V["..., 192}], msg_controllen=32, [{cmsg_len=32, cmsg_level=SOL_SOCKET, cmsg_type=0x1d /* SCM_??? */}], msg_flags=0}, 0) = 84 <0.029752>
+23752 1532374704.171442 +++ exited with 0 +++
+23720 1532374704.171526 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=7, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+23720 1532374704.208028 +++ exited with 0 +++
+23687 1532374704.208071 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23720, si_uid=0, si_status=0, si_utime=1, si_stime=2} ---
+23754 1532374704.209088 execve("/usr/bin/docker-runc", ["docker-runc", "kill", "--all", "3472659a5792625cb352956f73b0ab01"..., "SIGKILL"], [/* 5 vars */]) = 0 <0.000186>
+23754 1532374704.215244 socket(PF_INET, SOCK_STREAM, IPPROTO_TCP) = 3 <0.000012>
+23754 1532374704.215294 socket(PF_INET6, SOCK_STREAM, IPPROTO_TCP) = 3 <0.000010>
+23754 1532374704.215354 socket(PF_INET6, SOCK_STREAM, IPPROTO_TCP) = 4 <0.000009>
+23758 1532374704.221521 +++ exited with 0 +++
+23757 1532374704.221529 +++ exited with 0 +++
+23756 1532374704.221533 +++ exited with 0 +++
+23755 1532374704.221538 +++ exited with 0 +++
+23754 1532374704.221684 +++ exited with 0 +++
+23686 1532374704.221700 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23754, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+23759 1532374704.222250 execve("/usr/bin/docker-runc", ["docker-runc", "delete", "3472659a5792625cb352956f73b0ab01"...], [/* 5 vars */]) = 0 <0.000212>
+23759 1532374704.229110 socket(PF_INET, SOCK_STREAM, IPPROTO_TCP) = 3 <0.000011>
+23759 1532374704.229163 socket(PF_INET6, SOCK_STREAM, IPPROTO_TCP) = 3 <0.000011>
+23759 1532374704.229258 socket(PF_INET6, SOCK_STREAM, IPPROTO_TCP) = 4 <0.000009>
+23762 1532374704.234861 +++ exited with 0 +++
+23764 1532374704.234868 +++ exited with 0 +++
+23761 1532374704.234872 +++ exited with 0 +++
+23760 1532374704.234876 +++ exited with 0 +++
+23763 1532374704.235056 +++ exited with 0 +++
+23759 1532374704.235061 +++ exited with 0 +++
+23665 1532374704.235091 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23759, si_uid=0, si_status=0, si_utime=0, si_stime=0} ---
+23665 1532374704.235416 +++ exited with 0 +++
+23692 1532374704.235433 +++ exited with 0 +++
+23751 1532374704.235446 +++ exited with 0 +++
+23750 1532374704.235451 +++ exited with 0 +++
+23687 1532374704.235455 +++ exited with 0 +++
+23686 1532374704.235460 +++ exited with 0 +++
+23649 1532374704.235464 +++ exited with 0 +++
+23644 1532374704.235468 +++ exited with 0 +++
+23643 1532374704.235473 +++ exited with 0 +++
+23647 1532374704.235617 +++ exited with 0 +++
+23623 1532374704.235625 +++ exited with 0 +++
+13026 1532374704.235643 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23623, si_uid=0, si_status=0, si_utime=0, si_stime=1} ---
+23766 1532374704.236620 execve("/usr/bin/docker-runc", ["docker-runc", "delete", "3472659a5792625cb352956f73b0ab01"...], [/* 5 vars */]) = 0 <0.000301>
+23766 1532374704.242640 socket(PF_INET, SOCK_STREAM, IPPROTO_TCP) = 3 <0.000012>
+23766 1532374704.242692 socket(PF_INET6, SOCK_STREAM, IPPROTO_TCP) = 3 <0.000009>
+23766 1532374704.242750 socket(PF_INET6, SOCK_STREAM, IPPROTO_TCP) = 4 <0.000010>
+23771 1532374704.247034 +++ exited with 1 +++
+23770 1532374704.247041 +++ exited with 1 +++
+23769 1532374704.247046 +++ exited with 1 +++
+23768 1532374704.247050 +++ exited with 1 +++
+23767 1532374704.247054 +++ exited with 1 +++
+23766 1532374704.247199 +++ exited with 1 +++
+7104  1532374704.247216 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=23766, si_uid=0, si_status=1, si_utime=0, si_stime=0} ---
