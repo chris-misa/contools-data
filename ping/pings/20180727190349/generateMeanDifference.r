@@ -16,7 +16,7 @@ colI <- 1
 
 # Set up the plot
 pdf(file="meanDifferencesV4.pdf", width=5, height=5)
-plot(xBounds, yBounds, type="n", main="RTT Mean Differences (IPV4)", ylab="Mean Difference (sec)",xlab="Payload Size (bytes)")
+plot(xBounds, yBounds, type="n", main="RTT Mean Differences (IPV4)", ylab="Mean Difference (ms)",xlab="Payload Size (bytes)")
 
 # Add legend
 legend(0, yBounds[2], legend=intervalsStr, col=colors, lwd=2, title="Ping Interval (sec)")
@@ -58,7 +58,7 @@ colI <- 1
 
 # Set up the plot
 pdf(file="meanDifferencesV6.pdf", width=5, height=5)
-plot(xBounds, yBounds, type="n", main="RTT Mean Differences (IPV6)", ylab="Mean Difference (sec)",xlab="Payload Size (bytes)")
+plot(xBounds, yBounds, type="n", main="RTT Mean Differences (IPV6)", ylab="Mean Difference (ms)",xlab="Payload Size (bytes)")
 
 # Add legend
 legend(0, yBounds[2], legend=intervalsStr, col=colors, lwd=2, title="Ping Interval (sec)")

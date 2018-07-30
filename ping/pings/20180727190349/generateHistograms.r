@@ -4,8 +4,8 @@ sizesStr <- c(16, 56, 120, 504, 1472)
 
 # Sequence of breaks in histogram
 mBinSize <- 0.001
-mBreaks <- seq(0,2,0.001)
-mYLabel <- paste("Count (",mBinSize,") sec bins",sep="")
+mBreaks <- seq(0,2,mBinSize)
+mYLabel <- paste("Count (",mBinSize,") ms bins",sep="")
 
 # X-Boundary for graph
 xBounds <- c(0, 0.5)
@@ -30,7 +30,7 @@ for (i in intervalsStr) {
     yBounds <- c(0,yMax)
     plot(nativeHist$breaks[-1], nativeHist$counts, type="l", main=heading, xlim=xBounds, ylim=yBounds, ylab=mYLabel, xlab="")
     lines(containerHist$breaks[-1], containerHist$counts,type="l",col="red", xlim=xBounds, ylim=yBounds)
-    mtext("RTT (sec)",line=2,side=1,adj=1)
+    mtext("RTT (ms)",line=2,side=1,adj=1)
     mtext(paste("Native mean:",nativeMean),line=2,side=1,adj=0)
     mtext(paste("Container mean:",containerMean),line=3,side=1,adj=0)
     mtext(paste("Difference:",containerMean-nativeMean),line=4,side=1,adj=0)
@@ -59,7 +59,7 @@ for (i in intervalsStr) {
     yBounds <- c(0,yMax)
     plot(nativeHist$breaks[-1], nativeHist$counts, type="l", main=heading, xlim=xBounds, ylim=yBounds, ylab=mYLabel, xlab="")
     lines(containerHist$breaks[-1], containerHist$counts,type="l",col="red", xlim=xBounds, ylim=yBounds)
-    mtext("RTT (sec)",line=2,side=1,adj=1)
+    mtext("RTT (ms)",line=2,side=1,adj=1)
     mtext(paste("Native mean:",nativeMean),line=2,side=1,adj=0)
     mtext(paste("Container mean:",containerMean),line=3,side=1,adj=0)
     mtext(paste("Difference:",containerMean-nativeMean),line=4,side=1,adj=0)
