@@ -7,6 +7,7 @@ on a new line.
 
 Arguments:
   1. A file glob of input files
+    (probably have to single quot this to avoid shell expansion)
 
 """
 
