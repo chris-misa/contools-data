@@ -17,3 +17,7 @@ forwarding from eno1d1 to docker0.
 
 Generate histograms comparing container and native rtts at each flag setting.
 
+
+## generateMeanDifference.r
+
+Generate a graph of the mean difference between container an native measurements as a function of packet size.
