@@ -22,6 +22,7 @@ for (i in arg_seq) {
   containerMean <- mean(container[,1])
   dindBiasHist <- hist(dindBias[,1], plot=F, breaks=mBreaks)
   dindBiasMean <- mean(dindBias[,1])
+  dindBiasMin <- min(dindBias[,1])
 
   # Graph native and container histograms on same axis
   pdf(file=paste("native_container_dind_v4_", i, ".pdf",sep=""), width=5, height=5)
@@ -33,7 +34,11 @@ for (i in arg_seq) {
   lines(dindBiasHist$breaks[-1], dindBiasHist$counts,type="l",col="red", xlim=xBounds, ylim=yBounds)
   mtext("RTT (ms)",line=2,side=1,adj=1)
   mtext(paste("Native mean:",nativeMean),line=2,side=1,adj=0)
-  mtext(paste("Container mean:",containerMean),line=3,side=1,adj=0)
-  mtext(paste("Dind Bias mean:",dindBiasMean),line=4,side=1,adj=0)
+  mtext(paste("Container mean/min-corrected:",
+              format(containerMean,nsmall=3), "/",
+              format(containerMean - dindBiasMin, nsmall=3)),line=3,side=1,adj=0)
+  mtext(paste("Dind Bias mean/min:",
+              format(dindBiasMean,nsmall=3), "/",
+              format(dindBiasMin,nsmall=3)),line=4,side=1,adj=0)
   dev.off()
 }
