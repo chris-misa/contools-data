@@ -1,0 +1,96 @@
+Interval: i0.1 Payload Size: s16 
+container_container  mean: 0.040503 dev 0.006378
+container_host       mean: 0.054750 dev 0.018324
+container_target     mean: 0.204332 dev 0.026085
+host_host            mean: 0.039597 dev 0.004272
+native_target        mean: 0.159918 dev 0.029728
+Measured Bias: 0.044413
+
+Interval: i0.1 Payload Size: s56 
+container_container  mean: 0.041077 dev 0.006272
+container_host       mean: 0.057250 dev 0.054479
+container_target     mean: 0.207982 dev 0.062854
+host_host            mean: 0.039460 dev 0.004179
+native_target        mean: 0.162140 dev 0.028113
+Measured Bias: 0.045842
+
+Interval: i0.1 Payload Size: s120 
+container_container  mean: 0.042093 dev 0.031240
+container_host       mean: 0.054802 dev 0.009164
+container_target     mean: 0.207328 dev 0.042494
+host_host            mean: 0.039475 dev 0.004252
+native_target        mean: 0.164592 dev 0.022871
+Measured Bias: 0.042737
+
+Interval: i0.3 Payload Size: s16 
+container_container  mean: 0.043337 dev 0.005777
+container_host       mean: 0.058647 dev 0.018987
+container_target     mean: 0.206698 dev 0.067280
+host_host            mean: 0.040822 dev 0.004094
+native_target        mean: 0.154032 dev 0.026699
+Measured Bias: 0.052667
+
+Interval: i0.3 Payload Size: s56 
+container_container  mean: 0.043537 dev 0.010340
+container_host       mean: 0.058212 dev 0.013812
+container_target     mean: 0.204793 dev 0.044434
+host_host            mean: 0.041268 dev 0.004507
+native_target        mean: 0.153492 dev 0.019213
+Measured Bias: 0.051302
+
+Interval: i0.3 Payload Size: s120 
+container_container  mean: 0.043262 dev 0.005854
+container_host       mean: 0.059117 dev 0.039788
+container_target     mean: 0.206187 dev 0.044603
+host_host            mean: 0.041087 dev 0.004194
+native_target        mean: 0.156423 dev 0.019342
+Measured Bias: 0.049763
+
+Interval: i0.5 Payload Size: s16 
+container_container  mean: 0.045582 dev 0.013787
+container_host       mean: 0.060367 dev 0.021451
+container_target     mean: 0.207420 dev 0.040375
+host_host            mean: 0.041645 dev 0.003620
+native_target        mean: 0.153792 dev 0.027312
+Measured Bias: 0.053628
+
+Interval: i0.5 Payload Size: s56 
+container_container  mean: 0.045082 dev 0.005191
+container_host       mean: 0.059780 dev 0.012048
+container_target     mean: 0.204675 dev 0.018587
+host_host            mean: 0.042008 dev 0.003744
+native_target        mean: 0.152935 dev 0.016551
+Measured Bias: 0.051740
+
+Interval: i0.5 Payload Size: s120 
+container_container  mean: 0.044888 dev 0.005748
+container_host       mean: 0.060513 dev 0.012281
+container_target     mean: 0.208382 dev 0.029836
+host_host            mean: 0.041835 dev 0.003688
+native_target        mean: 0.153802 dev 0.020898
+Measured Bias: 0.054580
+
+Interval: i1.0 Payload Size: s16 
+container_container  mean: 0.047702 dev 0.013626
+container_host       mean: 0.062772 dev 0.018381
+container_target     mean: 0.211263 dev 0.038105
+host_host            mean: 0.043332 dev 0.009667
+native_target        mean: 0.153397 dev 0.021441
+Measured Bias: 0.057867
+
+Interval: i1.0 Payload Size: s56 
+container_container  mean: 0.047592 dev 0.012285
+container_host       mean: 0.062813 dev 0.011053
+container_target     mean: 0.206542 dev 0.025758
+host_host            mean: 0.043215 dev 0.009707
+native_target        mean: 0.156838 dev 0.035209
+Measured Bias: 0.049703
+
+Interval: i1.0 Payload Size: s120 
+container_container  mean: 0.047530 dev 0.015996
+container_host       mean: 0.063972 dev 0.019575
+container_target     mean: 0.213290 dev 0.038699
+host_host            mean: 0.044057 dev 0.015584
+native_target        mean: 0.155365 dev 0.018946
+Measured Bias: 0.057925
+

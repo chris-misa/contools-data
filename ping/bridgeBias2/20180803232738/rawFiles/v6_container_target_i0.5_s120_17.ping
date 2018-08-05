@@ -1,0 +1,35 @@
+PING fd41:98cb:a6ff:5a6a::2(fd41:98cb:a6ff:5a6a::2) 120 data bytes
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=1 ttl=63 time=0.250 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=2 ttl=63 time=0.221 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=3 ttl=63 time=0.196 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=4 ttl=63 time=0.248 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=5 ttl=63 time=0.199 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=6 ttl=63 time=0.204 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=7 ttl=63 time=0.232 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=8 ttl=63 time=0.196 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=9 ttl=63 time=0.200 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=10 ttl=63 time=0.220 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=11 ttl=63 time=0.225 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=12 ttl=63 time=0.198 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=13 ttl=63 time=0.206 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=14 ttl=63 time=0.233 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=15 ttl=63 time=0.196 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=16 ttl=63 time=0.219 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=17 ttl=63 time=0.203 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=18 ttl=63 time=0.568 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=19 ttl=63 time=0.202 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=20 ttl=63 time=0.158 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=21 ttl=63 time=0.203 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=22 ttl=63 time=0.200 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=23 ttl=63 time=0.204 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=24 ttl=63 time=0.228 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=25 ttl=63 time=0.207 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=26 ttl=63 time=0.208 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=27 ttl=63 time=0.203 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=28 ttl=63 time=0.210 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=29 ttl=63 time=0.204 ms
+128 bytes from fd41:98cb:a6ff:5a6a::2: icmp_seq=30 ttl=63 time=0.204 ms
+
+--- fd41:98cb:a6ff:5a6a::2 ping statistics ---
+30 packets transmitted, 30 received, 0% packet loss, time 512ms
+rtt min/avg/max/mdev = 0.158/0.221/0.568/0.068 ms
