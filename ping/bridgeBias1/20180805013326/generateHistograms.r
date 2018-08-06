@@ -49,5 +49,6 @@ for (i in intervals) {
   lines(mBreaks[-1],nativeToTargetHist$counts,type="l",col="black")
   lines(mBreaks[-1],dindContainerToContainerHist$counts,type="l",col="blue")
   lines(mBreaks[-1],dindToContainerHist$counts,type="l",col="gray")
+  legend("topright",legend=c("Cont. to Target","Native to Target","Cont. in DinD to Cont. in Native","DinD to Cont. in Native"),col=c("red","black","blue","gray"),lty=1,cex=0.8)
   dev.off()
 }

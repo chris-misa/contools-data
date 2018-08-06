@@ -1,0 +1,54 @@
+All payloads, 120 bytes
+
+Ping at 1.0 second intervals: mean (deviation) in ms
+ Container to Target: 0.1123555 ( 0.01778995 )
+ Native to Target:    0.08391 ( 0.01442165 )
+ Difference:          0.0284455 
+ Fraction:            1.339 
+
+ Dind Container to Container: 0.055448 ( 0.02059484 )
+ Dind to Container:           0.0404085 ( 0.01607236 )
+ Difference:                  0.0150395 
+ Fraction:                    1.372187 
+
+ From 2000 packets
+
+Ping at 0.8 second intervals: mean (deviation) in ms
+ Container to Target: 0.1138655 ( 0.0236513 )
+ Native to Target:    0.08391 ( 0.01442165 )
+ Difference:          0.0299555 
+ Fraction:            1.356996 
+
+ Dind Container to Container: 0.055648 ( 0.02587504 )
+ Dind to Container:           0.041177 ( 0.02024684 )
+ Difference:                  0.014471 
+ Fraction:                    1.351434 
+
+ From 2000 packets
+
+Ping at 0.6 second intervals: mean (deviation) in ms
+ Container to Target: 0.1124745 ( 0.02086646 )
+ Native to Target:    0.08391 ( 0.01442165 )
+ Difference:          0.0285645 
+ Fraction:            1.340418 
+
+ Dind Container to Container: 0.0538845 ( 0.01782911 )
+ Dind to Container:           0.0387455 ( 0.01368976 )
+ Difference:                  0.015139 
+ Fraction:                    1.390729 
+
+ From 2000 packets
+
+Ping at 0.4 second intervals: mean (deviation) in ms
+ Container to Target: 0.1090685 ( 0.01876619 )
+ Native to Target:    0.08391 ( 0.01442165 )
+ Difference:          0.0251585 
+ Fraction:            1.299827 
+
+ Dind Container to Container: 0.0534765 ( 0.01788268 )
+ Dind to Container:           0.0402635 ( 0.02629697 )
+ Difference:                  0.013213 
+ Fraction:                    1.328163 
+
+ From 2000 packets
+

@@ -2,6 +2,8 @@ intervals <- c("1.0", "0.8", "0.6", "0.4")
 # All payloads are 120 bytes
 nums <- seq(0,9)
 
+cat("All payloads, 120 bytes\n\n")
+
 # For each interval
 for (i in intervals) {
 
@@ -18,7 +20,7 @@ for (i in intervals) {
     dindToContainer <- c(dindToContainer,scan(file=paste("rawFiles/v4_dind_to_container_i",i,"s120_",n,".data",sep=""), sep="\n", quiet=T))
   }
 
-  cat("Ping at",i,"second intervals mean (deviation):\n")
+  cat("Ping at",i,"second intervals: mean (deviation) in ms\n")
   meanContainerToTarget <- mean(containerToTarget)
   meanNativeToTarget <- mean(nativeToTarget)
   cat(" Container to Target:", meanContainerToTarget,"(",sd(containerToTarget),")\n")
@@ -32,4 +34,5 @@ for (i in intervals) {
   cat(" Dind to Container:          ", meanDindToContainer,"(",sd(dindToContainer),")\n")
   cat(" Difference:                 ", meanDindContainerToContainer-meanDindToContainer,"\n")
   cat(" Fraction:                   ", meanDindContainerToContainer/meanDindToContainer,"\n\n")
+  cat(" From",length(containerToTarget),"packets\n\n")
 }
