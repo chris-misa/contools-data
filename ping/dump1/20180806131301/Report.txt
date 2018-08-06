@@ -1,0 +1,38 @@
+Pcap Dump Strategy 1 Report for ping i0.5_s56_ 
+
+IPv4:
+
+ Control: mean (deviation) in ms
+  native:     0.155728 ( 0.02490953 )
+  container:  0.207915 ( 0.01438307 )
+  difference: 0.052187
+
+ Instrumented: mean (deviation) in ms
+  native:     0.160116 ( 0.01321345 )
+  container:  0.222389 ( 0.02168086 )
+  difference: 0.062273 
+
+ Estimated RTT bias: mean (deviation) in ms
+   0.05688636 ( 0.008060382 )
+
+ Agregated across 1000 packets in each path.
+
+Pcap Dump Strategy 1 Report for ping i0.5_s56_ 
+
+IPv6:
+
+ Control: mean (deviation) in ms
+  native:     0.174659 ( 0.02510285 )
+  container:  0.212829 ( 0.07710081 )
+  difference: 0.03817
+
+ Instrumented: mean (deviation) in ms
+  native:     0.17782 ( 0.01314216 )
+  container:  0.224144 ( 0.0599075 )
+  difference: 0.046324 
+
+ Estimated RTT bias: mean (deviation) in ms
+   0.04307483 ( 0.002696553 )
+
+ Agregated across 1000 packets in each path.
+
