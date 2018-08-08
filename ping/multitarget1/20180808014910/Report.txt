@@ -1,9 +1,8 @@
 Multitarget ping RTT: in ms (dev)
-  Target: 127.0.0.1 
-    Native:    0.028768 ( 0.01741427 )
-    Container: 0.026658 ( 0.0145659 )
-    diff:      -0.00211 
-    diff / container deviation: -14.49 %
+
+  Native loopback:     0.028768 ( 0.01741427 )
+  Container loopback:  0.026658 ( 0.0145659 )
+  Container to bridge: 0.035246 ( 0.01578353 )
 
   Target: 128.110.103.241 
     Native:    0.510218 ( 0.2966394 )
