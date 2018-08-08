@@ -1,0 +1,37 @@
+Multitarget ping RTT: in ms (dev)
+  Target: 127.0.0.1 
+    Native:    0.028768 ( 0.01741427 )
+    Container: 0.026658 ( 0.0145659 )
+    diff:      -0.00211 
+    diff / container deviation: -14.49 %
+
+  Target: 128.110.103.241 
+    Native:    0.510218 ( 0.2966394 )
+    Container: 0.566004 ( 0.727087 )
+    diff:      0.055786 
+    diff / container deviation: 7.67 %
+
+  Target: 140.197.253.0 
+    Native:    0.905334 ( 0.1905695 )
+    Container: 0.93563 ( 0.1752723 )
+    diff:      0.030296 
+    diff / container deviation: 17.29 %
+
+  Target: 198.71.45.230 
+    Native:    1.07457 ( 1.628868 )
+    Container: 1.258602 ( 2.352769 )
+    diff:      0.184032 
+    diff / container deviation: 7.82 %
+
+  Target: 162.252.70.155 
+    Native:    14.7478 ( 0.8054518 )
+    Container: 14.7762 ( 0.6903381 )
+    diff:      0.0284 
+    diff / container deviation: 4.11 %
+
+  Target: 128.223.142.224 
+    Native:    26.467 ( 1.168273 )
+    Container: 26.4832 ( 1.150707 )
+    diff:      0.0162 
+    diff / container deviation: 1.41 %
+

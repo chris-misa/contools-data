@@ -1,0 +1,7 @@
+NTP Feasibility Experiment Results: RTTs as ms (dev)
+  Native Mean:    0.155032 ( 0.0307026 )
+  Container Mean: 0.204688 ( 0.0393292 )
+    Difference:   0.049656 
+
+  Mean NTP RTTs:  0.170548 
+

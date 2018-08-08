@@ -1,0 +1,300 @@
+Origin send: 1533682840.131822
+Target rec:  1533682840.131902
+  Outbound Bias: 0.000080
+Target send: 1533682840.132021
+Origin rec:  1533682840.132111
+  Inbound Bias:  0.000090
+Origin send: 1533682841.365305
+Target rec:  1533682841.365407
+  Outbound Bias: 0.000102
+Target send: 1533682841.365510
+Origin rec:  1533682841.365574
+  Inbound Bias:  0.000064
+Origin send: 1533682842.594261
+Target rec:  1533682842.594354
+  Outbound Bias: 0.000093
+Target send: 1533682842.594452
+Origin rec:  1533682842.594514
+  Inbound Bias:  0.000062
+Origin send: 1533682843.822319
+Target rec:  1533682843.822406
+  Outbound Bias: 0.000087
+Target send: 1533682843.822548
+Origin rec:  1533682843.822616
+  Inbound Bias:  0.000068
+Origin send: 1533682845.047390
+Target rec:  1533682845.047467
+  Outbound Bias: 0.000077
+Target send: 1533682845.047566
+Origin rec:  1533682845.047636
+  Inbound Bias:  0.000070
+Origin send: 1533682846.270138
+Target rec:  1533682846.270224
+  Outbound Bias: 0.000086
+Target send: 1533682846.270366
+Origin rec:  1533682846.270432
+  Inbound Bias:  0.000066
+Origin send: 1533682847.490195
+Target rec:  1533682847.490280
+  Outbound Bias: 0.000085
+Target send: 1533682847.490408
+Origin rec:  1533682847.490471
+  Inbound Bias:  0.000063
+Origin send: 1533682848.713335
+Target rec:  1533682848.713403
+  Outbound Bias: 0.000068
+Target send: 1533682848.713511
+Origin rec:  1533682848.713583
+  Inbound Bias:  0.000072
+Origin send: 1533682849.927729
+Target rec:  1533682849.927821
+  Outbound Bias: 0.000092
+Target send: 1533682849.927937
+Origin rec:  1533682849.928000
+  Inbound Bias:  0.000063
+Origin send: 1533682851.160746
+Target rec:  1533682851.160855
+  Outbound Bias: 0.000109
+Target send: 1533682851.161133
+Origin rec:  1533682851.161191
+  Inbound Bias:  0.000058
+Origin send: 1533682852.383310
+Target rec:  1533682852.383399
+  Outbound Bias: 0.000089
+Target send: 1533682852.383533
+Origin rec:  1533682852.383595
+  Inbound Bias:  0.000062
+Origin send: 1533682853.603202
+Target rec:  1533682853.603288
+  Outbound Bias: 0.000086
+Target send: 1533682853.603420
+Origin rec:  1533682853.603479
+  Inbound Bias:  0.000059
+Origin send: 1533682854.855259
+Target rec:  1533682854.855345
+  Outbound Bias: 0.000086
+Target send: 1533682854.855468
+Origin rec:  1533682854.855544
+  Inbound Bias:  0.000076
+Origin send: 1533682856.082224
+Target rec:  1533682856.082311
+  Outbound Bias: 0.000087
+Target send: 1533682856.082453
+Origin rec:  1533682856.082517
+  Inbound Bias:  0.000064
+Origin send: 1533682857.298569
+Target rec:  1533682857.298656
+  Outbound Bias: 0.000087
+Target send: 1533682857.298758
+Origin rec:  1533682857.298819
+  Inbound Bias:  0.000061
+Origin send: 1533682858.532709
+Target rec:  1533682858.532790
+  Outbound Bias: 0.000081
+Target send: 1533682858.532916
+Origin rec:  1533682858.532977
+  Inbound Bias:  0.000061
+Origin send: 1533682859.754246
+Target rec:  1533682859.754346
+  Outbound Bias: 0.000100
+Target send: 1533682859.754480
+Origin rec:  1533682859.754545
+  Inbound Bias:  0.000065
+Origin send: 1533682860.980477
+Target rec:  1533682860.980549
+  Outbound Bias: 0.000072
+Target send: 1533682860.980633
+Origin rec:  1533682860.980695
+  Inbound Bias:  0.000062
+Origin send: 1533682862.218806
+Target rec:  1533682862.218887
+  Outbound Bias: 0.000081
+Target send: 1533682862.218999
+Origin rec:  1533682862.219047
+  Inbound Bias:  0.000048
+Origin send: 1533682863.445003
+Target rec:  1533682863.445088
+  Outbound Bias: 0.000085
+Target send: 1533682863.445219
+Origin rec:  1533682863.445281
+  Inbound Bias:  0.000062
+Origin send: 1533682864.658258
+Target rec:  1533682864.658333
+  Outbound Bias: 0.000075
+Target send: 1533682864.658479
+Origin rec:  1533682864.658538
+  Inbound Bias:  0.000059
+Origin send: 1533682865.876983
+Target rec:  1533682865.877058
+  Outbound Bias: 0.000075
+Target send: 1533682865.877189
+Origin rec:  1533682865.877251
+  Inbound Bias:  0.000062
+Origin send: 1533682867.094149
+Target rec:  1533682867.094234
+  Outbound Bias: 0.000085
+Target send: 1533682867.094371
+Origin rec:  1533682867.094437
+  Inbound Bias:  0.000066
+Origin send: 1533682868.323741
+Target rec:  1533682868.323820
+  Outbound Bias: 0.000079
+Target send: 1533682868.323939
+Origin rec:  1533682868.324002
+  Inbound Bias:  0.000063
+Origin send: 1533682869.555200
+Target rec:  1533682869.555283
+  Outbound Bias: 0.000083
+Target send: 1533682869.555410
+Origin rec:  1533682869.555474
+  Inbound Bias:  0.000064
+Origin send: 1533682870.779111
+Target rec:  1533682870.779191
+  Outbound Bias: 0.000080
+Target send: 1533682870.779344
+Origin rec:  1533682870.779416
+  Inbound Bias:  0.000072
+Origin send: 1533682872.001579
+Target rec:  1533682872.001650
+  Outbound Bias: 0.000071
+Target send: 1533682872.001767
+Origin rec:  1533682872.001830
+  Inbound Bias:  0.000063
+Origin send: 1533682873.208720
+Target rec:  1533682873.208817
+  Outbound Bias: 0.000097
+Target send: 1533682873.208945
+Origin rec:  1533682873.208999
+  Inbound Bias:  0.000054
+Origin send: 1533682874.424856
+Target rec:  1533682874.424937
+  Outbound Bias: 0.000081
+Target send: 1533682874.425071
+Origin rec:  1533682874.425133
+  Inbound Bias:  0.000062
+Origin send: 1533682875.647037
+Target rec:  1533682875.647122
+  Outbound Bias: 0.000085
+Target send: 1533682875.647271
+Origin rec:  1533682875.647338
+  Inbound Bias:  0.000067
+Origin send: 1533682876.872072
+Target rec:  1533682876.872709
+  Outbound Bias: 0.000637
+Target send: 1533682876.872981
+Origin rec:  1533682876.873047
+  Inbound Bias:  0.000066
+Origin send: 1533682878.106321
+Target rec:  1533682878.106407
+  Outbound Bias: 0.000086
+Target send: 1533682878.106544
+Origin rec:  1533682878.106607
+  Inbound Bias:  0.000063
+Origin send: 1533682879.310074
+Target rec:  1533682879.310159
+  Outbound Bias: 0.000085
+Target send: 1533682879.310293
+Origin rec:  1533682879.310358
+  Inbound Bias:  0.000065
+Origin send: 1533682880.526704
+Target rec:  1533682880.526783
+  Outbound Bias: 0.000079
+Target send: 1533682880.526901
+Origin rec:  1533682880.526978
+  Inbound Bias:  0.000077
+Origin send: 1533682881.758934
+Target rec:  1533682881.759016
+  Outbound Bias: 0.000082
+Target send: 1533682881.759121
+Origin rec:  1533682881.759177
+  Inbound Bias:  0.000056
+Origin send: 1533682882.969549
+Target rec:  1533682882.969632
+  Outbound Bias: 0.000083
+Target send: 1533682882.969894
+Origin rec:  1533682882.969939
+  Inbound Bias:  0.000045
+Origin send: 1533682884.196652
+Target rec:  1533682884.196738
+  Outbound Bias: 0.000086
+Target send: 1533682884.196837
+Origin rec:  1533682884.196899
+  Inbound Bias:  0.000062
+Origin send: 1533682885.425824
+Target rec:  1533682885.425909
+  Outbound Bias: 0.000085
+Target send: 1533682885.426025
+Origin rec:  1533682885.426074
+  Inbound Bias:  0.000049
+Origin send: 1533682886.639011
+Target rec:  1533682886.639095
+  Outbound Bias: 0.000084
+Target send: 1533682886.639202
+Origin rec:  1533682886.639258
+  Inbound Bias:  0.000056
+Origin send: 1533682887.847750
+Target rec:  1533682887.847833
+  Outbound Bias: 0.000083
+Target send: 1533682887.847969
+Origin rec:  1533682887.848031
+  Inbound Bias:  0.000062
+Origin send: 1533682889.073015
+Target rec:  1533682889.073094
+  Outbound Bias: 0.000079
+Target send: 1533682889.073203
+Origin rec:  1533682889.073247
+  Inbound Bias:  0.000044
+Origin send: 1533682890.291797
+Target rec:  1533682890.291881
+  Outbound Bias: 0.000084
+Target send: 1533682890.291998
+Origin rec:  1533682890.292059
+  Inbound Bias:  0.000061
+Origin send: 1533682891.513813
+Target rec:  1533682891.513888
+  Outbound Bias: 0.000075
+Target send: 1533682891.514016
+Origin rec:  1533682891.514080
+  Inbound Bias:  0.000064
+Origin send: 1533682892.734573
+Target rec:  1533682892.734655
+  Outbound Bias: 0.000082
+Target send: 1533682892.734790
+Origin rec:  1533682892.734856
+  Inbound Bias:  0.000066
+Origin send: 1533682893.958568
+Target rec:  1533682893.958649
+  Outbound Bias: 0.000081
+Target send: 1533682893.958783
+Origin rec:  1533682893.958843
+  Inbound Bias:  0.000060
+Origin send: 1533682895.180534
+Target rec:  1533682895.180615
+  Outbound Bias: 0.000081
+Target send: 1533682895.180750
+Origin rec:  1533682895.180817
+  Inbound Bias:  0.000067
+Origin send: 1533682896.393707
+Target rec:  1533682896.393792
+  Outbound Bias: 0.000085
+Target send: 1533682896.394117
+Origin rec:  1533682896.394178
+  Inbound Bias:  0.000061
+Origin send: 1533682897.606576
+Target rec:  1533682897.606662
+  Outbound Bias: 0.000086
+Target send: 1533682897.606773
+Origin rec:  1533682897.606832
+  Inbound Bias:  0.000059
+Origin send: 1533682898.833322
+Target rec:  1533682898.833410
+  Outbound Bias: 0.000088
+Target send: 1533682898.833751
+Origin rec:  1533682898.833819
+  Inbound Bias:  0.000068
+Origin send: 1533682900.068818
+Target rec:  1533682900.068902
+  Outbound Bias: 0.000084
+Target send: 1533682900.069034
+Origin rec:  1533682900.069100
+  Inbound Bias:  0.000066
