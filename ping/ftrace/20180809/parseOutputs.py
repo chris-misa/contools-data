@@ -6,9 +6,11 @@ Looks for files in rawFile/ for each given target value.
 """
 
 TARGETS=["10.10.1.2"]
+PREFIX="rawFiles/"
 
 import sys
 import re
+import pprint
 from decimal import Decimal
 
 """
@@ -71,13 +73,24 @@ Main function for parseOutputs.py
 """
 def main():
   for target in TARGETS:
-    with open("v4_native_"+target+".ping") as nativePings, \
-         open("v4_native_"+target+".tcpdump") as nativeDump, \
-         open("v4_native_"+target+".ftrace") as nativeTrace, \
-         open("v4_container_"+target+".ping") as containerPing, \
-         open("v4_container_"+target+".tcpdump") as containerDump, \
-         open("v4_container_"+target+".ftrace") as containerTrace:
-      pass
+    nativeEvents = []
+    with open(PREFIX+"v4_native_"+target+".ping") as nativePings:
+      for line in nativePings:
+        prsLine = parsePingLine(line)
+        if prsLine != None:
+          nativeEvents.append(prsLine)
+    with open(PREFIX+"v4_native_"+target+".tcpdump") as nativeDump:
+      for line in nativeDump:
+        prsLine = parseTcpdumpLine(line)
+        if prsLine != None:
+          nativeEvents.append(prsLine)
+    with open(PREFIX+"v4_native_"+target+".ftrace") as nativeTrace:
+      for line in nativeTrace:
+        prsLine = parseFtraceLine(line)
+        if prsLine != None:
+          nativeEvents.append(prsLine)
+    nativeEvents.sort(key=lambda(e): e["time"])
+    pprint.pprint(nativeEvents)
 
 if __name__ == "__main__":
   main()
