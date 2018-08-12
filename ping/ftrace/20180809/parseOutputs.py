@@ -69,28 +69,66 @@ def parseFtraceLine(l):
     return None
 
 """
-Main function for parseOutputs.py
+Parse the set of files whose names correspond to the given targets
+
+Return a tuple: (nativeStory, containerStory)
+where each story is a list of events, compiled in cronological order from all monitor systems
 """
-def main():
-  for target in TARGETS:
+def parse(targets):
+  for target in targets:
+    # Parse native events
     nativeEvents = []
     with open(PREFIX+"v4_native_"+target+".ping") as nativePings:
       for line in nativePings:
         prsLine = parsePingLine(line)
         if prsLine != None:
+          prsLine["gen"] = "ping"
           nativeEvents.append(prsLine)
     with open(PREFIX+"v4_native_"+target+".tcpdump") as nativeDump:
       for line in nativeDump:
         prsLine = parseTcpdumpLine(line)
         if prsLine != None:
+          prsLine["gen"] = "tcpdump"
           nativeEvents.append(prsLine)
     with open(PREFIX+"v4_native_"+target+".ftrace") as nativeTrace:
       for line in nativeTrace:
         prsLine = parseFtraceLine(line)
         if prsLine != None:
+          prsLine["gen"] = "ftrace"
           nativeEvents.append(prsLine)
     nativeEvents.sort(key=lambda(e): e["time"])
-    pprint.pprint(nativeEvents)
+
+    # Parse container events
+    containerEvents = []
+    with open(PREFIX+"v4_container_"+target+".ping") as containerPings:
+      for line in containerPings:
+        prsLine = parsePingLine(line)
+        if prsLine != None:
+          prsLine["gen"] = "ping"
+          containerEvents.append(prsLine)
+    with open(PREFIX+"v4_container_"+target+".tcpdump") as containerDump:
+      for line in containerDump:
+        prsLine = parseTcpdumpLine(line)
+        if prsLine != None:
+          prsLine["gen"] = "tcpdump"
+          containerEvents.append(prsLine)
+    with open(PREFIX+"v4_container_"+target+".ftrace") as containerTrace:
+      for line in containerTrace:
+        prsLine = parseFtraceLine(line)
+        if prsLine != None:
+          prsLine["gen"] = "ftrace"
+          containerEvents.append(prsLine)
+    containerEvents.sort(key=lambda(e): e["time"])
+
+    # Return
+    return (nativeEvents, containerEvents)
+
+def main():
+  nativeStory, containerStory = parse(TARGETS)
+  print("Native Story:")
+  pprint.pprint(nativeStory)
+  print("\n\nContainer Story:")
+  pprint.pprint(containerStory)
 
 if __name__ == "__main__":
   main()
