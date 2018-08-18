@@ -55,6 +55,7 @@ def parseFtraceLine(l):
       retVal = int(n.group(1),0)
       retVal = (retVal & 0x7fffffffffffffff) \
           - (retVal & 0x8000000000000000)
+
       return {"time": Decimal(m.group(1)), \
               "type": m.group(2), \
               "return": retVal, \
@@ -98,10 +99,12 @@ def parse(target):
 A temporary main to check that parse is working
 """
 def main():
-  nativeStory = parse("rawFiles/v4_native_"+TARGET_IPV4+"_i0.5_s56")
+  fileName = "rawFiles/v4_native_"+TARGET_IPV4+"_i0.5_s24"
+  print("Native file name: " + fileName)
+  nativeStory = parse(fileName)
   print("Native Story:")
   pprint.pprint(nativeStory)
-  containerStory = parse("rawFiles/v4_container_"+TARGET_IPV4+"_i0.5_s56")
+  containerStory = parse("rawFiles/v4_container_"+TARGET_IPV4+"_i0.5_s24")
   print("\n\nContainer Story:")
   pprint.pprint(containerStory)
 

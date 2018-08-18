@@ -33,10 +33,12 @@ def getTimes(story):
   pingRTTs = []
   prevSend = None
   prevRecv = None
+  firstFtrace = False
   for event in story:
-    if event["gen"] == "ping":
+    if event["gen"] == "ping" and firstFtrace:
       pingRTTs.append(event["RTT"])
     elif event["gen"] == "ftrace":
+      firstFtrace = True
       if event["type"] == "enter_sendto":
         if prevSend == None:
           prevSend = event
@@ -82,21 +84,41 @@ def main():
   print("all numbers are mean micro-seconds")
   for setting in SETTINGS:
     print("Ping flags: " + setting)
-    print("  Native:")
+    print("  Native at " + TARGET_IPV4)
     native = po.parse(PREFIX + "v4_native_" + TARGET_IPV4 + "_" + setting)
     nativeSendToMean, nativeRecvMsgMean, nativePingRTTMean \
         = getMeans(native)
     print("    sendto:   " + str(nativeSendToMean))
     print("    recvmsg:  " + str(nativeRecvMsgMean))
     print("    ping RTT: " + str(nativePingRTTMean))
-    for target in CONTAINER_TARGETS_IPV4:
-      print("  Container at " + target)
+
+    print("  Container at " + TARGET_IPV4)
+    container = po.parse(PREFIX + "v4_container_" + TARGET_IPV4 + "_" + setting)
+    containerSendToMean, containerRecvMsgMean, containerPingRTTMean \
+        = getMeans(container)
+    print("    sendto:   " + str(containerSendToMean))
+    print("    recvmsg:  " + str(containerRecvMsgMean))
+    print("    ping RTT: " + str(containerPingRTTMean))
+
+    print("  Container, native differences:")
+    sendToDiff = containerSendToMean - nativeSendToMean
+    recvMsgDiff = containerRecvMsgMean - nativeRecvMsgMean
+    pingRTTDiff = containerPingRTTMean - nativePingRTTMean
+    print("  / sendto:           " + str(sendToDiff))
+    print("  / recvmsg:          " + str(recvMsgDiff))
+    print("  / ping RTT:         " + str(pingRTTDiff))
+    print("  / sendto + recvmsg: " + str(sendToDiff + recvMsgDiff))
+
+
+    print("  Other container targets:")
+    for target in CONTAINER_TARGETS_IPV4[1:]:
+      print("    Container at " + target)
       container = po.parse(PREFIX + "v4_container_" + target + "_" + setting)
       containerSendToMean, containerRecvMsgMean, containerPingRTTMean \
           = getMeans(container)
-      print("    sendto:   " + str(containerSendToMean))
-      print("    recvmsg:  " + str(containerRecvMsgMean))
-      print("    ping RTT: " + str(containerPingRTTMean))
+      print("      sendto:   " + str(containerSendToMean))
+      print("      recvmsg:  " + str(containerRecvMsgMean))
+      print("      ping RTT: " + str(containerPingRTTMean))
 
 if __name__ == "__main__":
   main()
