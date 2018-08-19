@@ -7,7 +7,6 @@ import parseOutputs as po
 from pprint import pprint
 from decimal import Decimal
 
-NEVENTS = 0
 
 # Omit the first run (-s 8) because it is too small for RTT data
 SETTINGS = ["i0.5_s24",
@@ -21,6 +20,10 @@ TARGET_IPV4 = "10.10.1.2"
 CONTAINER_TARGETS_IPV4=[TARGET_IPV4, "172.17.0.1", "10.10.1.1"]
 
 PREFIX="rawFiles/"
+
+# Global variable for keeping track of number of events in current
+# events list
+NEVENTS = 0
 
 """
 Parse the sendto events
