@@ -24,6 +24,7 @@ transactions.
 """
 def getMeans(transactions):
   sendToSum = Decimal(0)
+  stallSum = Decimal(0)
   recvMsgSum = Decimal(0)
   rttSum = Decimal(0)
   n = Decimal(len(transactions))
@@ -31,10 +32,17 @@ def getMeans(transactions):
   map(computeDiffs, transactions)
   for trans in transactions:
     sendToSum += trans["sendto_time"]
+    stallSum += trans["stall_time"]
     recvMsgSum += trans["recvmsg_time"]
     rttSum += trans["ping_rtt"]
-  return (sendToSum / n, recvMsgSum / n, rttSum / n)
+  return (sendToSum / n, stallSum / n, recvMsgSum / n, rttSum / n)
 
+def printMeans(means):
+  sendToMean, stallMean, recvMsgMean, pingRTTMean = means
+  print("    sendto:   " + str(sendToMean))
+  print("    stall:    " + str(stallMean))
+  print("    recvmsg:  " + str(recvMsgMean))
+  print("    ping RTT: " + str(pingRTTMean))
 
 def main():
   print("System call time line vs. Ping reported RTT")
@@ -43,39 +51,17 @@ def main():
     print("Ping flags: " + setting)
     print("  Native at " + TARGET_IPV4)
     native = getTransactions(PREFIX + "v4_native_" + TARGET_IPV4 + "_" + setting)
-    nativeSendToMean, nativeRecvMsgMean, nativePingRTTMean \
-        = getMeans(native)
-    print("    sendto:   " + str(nativeSendToMean))
-    print("    recvmsg:  " + str(nativeRecvMsgMean))
-    print("    ping RTT: " + str(nativePingRTTMean))
+    printMeans(getMeans(native))
 
     print("  Container at " + TARGET_IPV4)
     container = getTransactions(PREFIX + "v4_container_" + TARGET_IPV4 + "_" + setting)
-    containerSendToMean, containerRecvMsgMean, containerPingRTTMean \
-        = getMeans(container)
-    print("    sendto:   " + str(containerSendToMean))
-    print("    recvmsg:  " + str(containerRecvMsgMean))
-    print("    ping RTT: " + str(containerPingRTTMean))
-
-    print("  Container, native differences:")
-    sendToDiff = containerSendToMean - nativeSendToMean
-    recvMsgDiff = containerRecvMsgMean - nativeRecvMsgMean
-    pingRTTDiff = containerPingRTTMean - nativePingRTTMean
-    print("  / sendto:           " + str(sendToDiff))
-    print("  / recvmsg:          " + str(recvMsgDiff))
-    print("  / ping RTT:         " + str(pingRTTDiff))
-    print("  / sendto + recvmsg: " + str(sendToDiff + recvMsgDiff))
-
+    printMeans(getMeans(container))
 
     print("  Other container targets:")
     for target in CONTAINER_TARGETS_IPV4[1:]:
       print("    Container at " + target)
       container = getTransactions(PREFIX + "v4_container_" + target + "_" + setting)
-      containerSendToMean, containerRecvMsgMean, containerPingRTTMean \
-          = getMeans(container)
-      print("      sendto:   " + str(containerSendToMean))
-      print("      recvmsg:  " + str(containerRecvMsgMean))
-      print("      ping RTT: " + str(containerPingRTTMean))
+      printMeans(getMeans(container))
 
 if __name__ == "__main__":
   main()
