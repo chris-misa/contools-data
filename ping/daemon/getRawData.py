@@ -22,7 +22,7 @@ def getRawPingData(filepath):
       if m is not None:
         fOut.write(m.group(1) + "\n")
         rtts.append(Decimal(m.group(1)))
-  print("Mean: " + str(mean(rtts)) + " from " + filepath)
+  print("Mean: " + str(mean(rtts)) + " (ms) from " + filepath)
 
 
 def getRawLatData(filepath):
@@ -33,10 +33,10 @@ def getRawLatData(filepath):
       m = re.match(r".* outbound: ([0-9\.]+), inbound: ([0-9\.]+)", line)
       if m is not None:
         lat = Decimal(m.group(1)) + Decimal(m.group(2))
-        lat *= 1000 # convert to ms for comparison with ping rtts
+        lat *= 1000 # convert seconds to ms for comparison with ping rtts
         lats.append(lat)
         fOut.write(str(lat) + "\n")
-  print("Mean: " + str(mean(lats)) + " from " + filepath)
+  print("Mean: " + str(mean(lats)) + " (ms) from " + filepath)
 
 def main():
   if len(sys.argv) != 2:
