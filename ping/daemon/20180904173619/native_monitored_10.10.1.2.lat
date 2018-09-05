@@ -1,0 +1,9 @@
+Activated capture on docker0 with:
+  snaplen: 62
+  timeout: 1000 ms
+Activated capture on eno1d1 with:
+  snaplen: 62
+  timeout: 1000 ms
+Starting capture between docker0 and eno1d1
+Cleaning up. . .
+Done.
