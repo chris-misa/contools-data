@@ -11,7 +11,7 @@ from decimal import Decimal
 USAGE="getRawData <path to files>"
 
 def mean(a):
-  return sum(a) / Decimal(len(a))
+  return sum(a) / Decimal(len(a)) if len(a) != 0 else 0
 
 def getRawPingData(filepath):
   outFileName = filepath + "_raw"
