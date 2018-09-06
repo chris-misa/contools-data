@@ -1,4 +1,11 @@
-PREFIX <- "20180904173619/"
+args = commandArgs(trailingOnly=T)
+USAGE <- "Usage: rscript genReport.r <directory containing _raw data files"
+
+if (length(args) != 1) {
+  stop(USAGE);
+}
+
+PREFIX <- args[1]
 TARGET <- "10.10.1.2"
 
 containerControl <- scan(file=paste(PREFIX, "container_control_", TARGET,
@@ -17,7 +24,22 @@ pcapLatencies <- scan(file=paste(PREFIX, "container_monitored_", TARGET,
   ".lat_raw", sep=""), sep="\n", quiet=T)
 
 getStats <- function(d) {
-  c(min(d), mean(d), max(d), sd(d))
+  if (length(d) == 0) {
+    c(0,0,0,0)
+  } else {
+    c(min(d), mean(d), max(d), sd(d))
+  }
+}
+
+subStats <- function(a,b) {
+  if (length(a) == 0) {
+    b
+  } else if (length(b) == 0) {
+    a
+  } else {
+    # deviations add!
+    c(a[1] - b[1], a[2] - b[2], a[3] - b[3], a[4] + b[4])
+  }
 }
 
 stats2String <- function(s) {
@@ -29,13 +51,11 @@ cat("for", PREFIX, "target:", TARGET)
 cat("  control:\n")
 cat("    native RTT:         ", stats2String(getStats(nativeControl)), "\n")
 cat("    container RTT:      ", stats2String(getStats(containerControl)), "\n")
-cat("    difference:         ", stats2String(getStats(containerControl)
-    - getStats(nativeControl)), "\n")
+cat("    difference:         ", stats2String(subStats(getStats(containerControl), getStats(nativeControl))), "\n")
 cat("  traced:\n")
 cat("    native RTT:         ", stats2String(getStats(nativeMonitored)), "\n")
 cat("    container RTT:      ", stats2String(getStats(containerMonitored)), "\n")
-cat("    difference:         ", stats2String(getStats(containerMonitored)
-    - getStats(nativeMonitored)), "\n")
+cat("    difference:         ", stats2String(subStats(getStats(containerMonitored), getStats(nativeMonitored))), "\n")
 
 cat("\n")
 cat("  estimated RTT latency:", stats2String(getStats(pcapLatencies)), "\n")
