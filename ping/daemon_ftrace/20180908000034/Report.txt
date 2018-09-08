@@ -1,0 +1,6 @@
+Mean: 0.2357704433497536945812807882 (ms) from ./container_monitored_10.10.1.2.ping
+Mean: 0.1751072834645669291338582677 (ms) from ./native_monitored_10.10.1.2.ping
+Mean: 0.1584552683896620278330019881 (ms) from ./native_control_10.10.1.2.ping
+Mean: 0.2081203980099502487562189055 (ms) from ./container_control_10.10.1.2.ping
+Mean: 0.044089 (ms) from ./container_monitored_10.10.1.2.trace
+Mean: 0.01793106893106893106893106893 (ms) from ./native_monitored_10.10.1.2.trace
