@@ -1,1 +1,3 @@
-ftracing all `net:*` events to get a sense of the overhead.
+ftracing with `net:*` events activated.
+
+saving each line as read from pipe, no processing just dumping to stdout.
