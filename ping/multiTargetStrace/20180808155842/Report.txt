@@ -1,0 +1,81 @@
+Multitarget with strace profiling
+
+RTTs: mean (dev)
+  Target: 127.0.0.1 
+    Control:
+      native:    0.04237 ( 0.002887294 )
+      container: 0.04764 ( 0.005192302 )
+      diff:      0.00527 
+    Instrumented (with strace):
+      native:    0.12556 ( 0.009900842 )
+      container: 0.18705 ( 0.01295242 )
+      diff:      0.06149 
+    Time spent in sendto and recvmsg syscalls:
+      native:    0.10982 ( 0.004319044 )
+      container: 0.13675 ( 0.003450589 )
+
+  Target: 128.110.153.106 
+    Control:
+      native:    0.04241 ( 0.002582361 )
+      container: 0.06144 ( 0.00857683 )
+      diff:      0.01903 
+    Instrumented (with strace):
+      native:    0.13099 ( 0.0248533 )
+      container: 0.19775 ( 0.01044889 )
+      diff:      0.06676 
+    Time spent in sendto and recvmsg syscalls:
+      native:    0.11078 ( 0.00594517 )
+      container: 0.15319 ( 0.005133953 )
+
+  Target: 128.223.142.244 
+    Control:
+      native:    26.402 ( 0.2570147 )
+      container: 26.52 ( 0.4403855 )
+      diff:      0.118 
+    Instrumented (with strace):
+      native:    26.489 ( 0.3719713 )
+      container: 26.638 ( 0.4179749 )
+      diff:      0.149 
+    Time spent in sendto and recvmsg syscalls:
+      native:    26.45481 ( 0.3738509 )
+      container: 26.52531 ( 0.4144257 )
+
+  Target: 140.197.253.0 
+    Control:
+      native:    0.94826 ( 0.2011696 )
+      container: 1.0362 ( 0.2400989 )
+      diff:      0.08794 
+    Instrumented (with strace):
+      native:    1.09053 ( 0.1766052 )
+      container: 1.13747 ( 0.2146264 )
+      diff:      0.04694 
+    Time spent in sendto and recvmsg syscalls:
+      native:    1.0456 ( 0.1815078 )
+      container: 1.01724 ( 0.2195093 )
+
+  Target: 162.252.70.155 
+    Control:
+      native:    14.734 ( 0.2458627 )
+      container: 14.803 ( 0.9111492 )
+      diff:      0.069 
+    Instrumented (with strace):
+      native:    14.976 ( 0.6010294 )
+      container: 15.053 ( 0.8423698 )
+      diff:      0.077 
+    Time spent in sendto and recvmsg syscalls:
+      native:    14.94539 ( 0.603316 )
+      container: 14.9273 ( 0.851259 )
+
+  Target: 198.71.45.230 
+    Control:
+      native:    1.54067 ( 3.210549 )
+      container: 1.0622 ( 0.9701969 )
+      diff:      -0.47847 
+    Instrumented (with strace):
+      native:    1.70776 ( 3.186392 )
+      container: 1.77336 ( 3.252874 )
+      diff:      0.0656 
+    Time spent in sendto and recvmsg syscalls:
+      native:    1.65699 ( 3.18808 )
+      container: 1.64933 ( 3.252005 )
+

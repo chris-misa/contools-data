@@ -1,0 +1,5 @@
+in ping_common.c if SO_TIMESTAMP . . .
+
+maybe ping is using socket time stamps?
+
+REDO THIS is a real language: ocaml or Haskell. . . Parseing and organization is really a pain in python.
