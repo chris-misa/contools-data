@@ -1,0 +1,16 @@
+in_outer_dev:   eno1d1
+in_outer_func:  netif_receive_skb
+in_inner_dev:   docker0
+in_inner_func:  net_dev_start_xmit
+out_inner_dev:  eth0
+out_inner_func: net_dev_start_xmit
+out_outer_dev:  eno1d1
+out_outer_func: net_dev_start_xmit
+events: netif_receive_skb net_dev_start_xmit net_dev_start_xmit net_dev_start_xmit
+trace_clock: global
+
+Latency stats:
+send mean: 0.000000 ms
+recv mean: 0.000000 ms
+rtt  mean: 0.000000 ms
+Done.
