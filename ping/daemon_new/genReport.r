@@ -130,9 +130,15 @@ for (iperf_arg in IPERF_SETTINGS) {
   #
   pdf(file=paste(DATA_PATH,"seq_",iperf_arg,".pdf",sep=""), width=10, height=5)
   plot(containerRTTs, type="l", col="black",
-    ylim=c(0,max(containerRTTs)))
+    ylim=c(0,max(containerRTTs)), ylab="RTT (usec)",
+    xlab="Sequence Number",
+    main="Time Sequences")
   lines(containerRTTs - raw_lat - events_overheads, type="l", col="blue")
-  lines(rep(controlMean, length(containerRTTs)), type="l", col="red")
+  lines(controlRTTs, type="l", col="red")
+  # lines(rep(controlMean, length(containerRTTs)), type="l", col="red")
+  legend("topright", legend=c("container", "container adjusted", "control"),
+                     col=c("black", "blue", "red"),
+                     lty=1, cex=0.8)
   dev.off()
 
   controlMeans <- c(controlMeans, controlMean)
