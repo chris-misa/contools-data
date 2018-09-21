@@ -1,4 +1,4 @@
-IPERF_SETTINGS <- c("1M", "10M", "100M", "1G", "10G")
+#IPERF_SETTINGS <- c("1M", "10M", "100M", "1G", "10G")
 
 args <- commandArgs(trailingOnly=T)
 USAGE <- "Rscript genReport.r <path to data folder>"
@@ -9,6 +9,11 @@ if (length(args) != 1) {
 
 DATA_PATH <- args[1]
 TARGET <- "10.10.1.2"
+IPERF_SETTINGS <- scan(file=paste(DATA_PATH,"file_list",sep=""),
+                       what=character(),
+                       sep="\n")
+
+print(IPERF_SETTINGS)
 
 
 readPingFile <- function(filePath) {
@@ -55,12 +60,20 @@ readLatencyFile <- function(filePath) {
   data.frame(raw=raws, events_overhead=ohs)
 }
 
+drawArrows <- function(ys, sds, color) {
+  arrows(seq(1, length(ys), by=1), ys - sds,
+         seq(1, length(ys), by=1), ys + sds,
+         length=0.05, angle=90, code=3, col=color)
+}
+
 controlMeans <- c()
 controlSDs <- c()
 containerMeans <-c()
 containerSDs <- c()
 raw_latMeans <- c()
 raw_latSDs <- c()
+events_overheadMeans <- c()
+events_overheadSDs <- c()
 for (iperf_arg in IPERF_SETTINGS) {
   controlRTTs <- readPingFile(paste(DATA_PATH,
                                     "native_control_",
@@ -84,6 +97,7 @@ for (iperf_arg in IPERF_SETTINGS) {
                                       ".latency",
                                       sep = ""))
   raw_lat <- latencies$raw
+  events_overheads <- latencies$events_overhead
 
   controlMean <- mean(controlRTTs)
   controlSD <- sd(controlRTTs)
@@ -91,6 +105,8 @@ for (iperf_arg in IPERF_SETTINGS) {
   containerSD <- sd(containerRTTs)
   raw_latMean <- mean(raw_lat)
   raw_latSD <- sd(raw_lat)
+  events_overheadMean <- mean(events_overheads)
+  events_overheadSD <- sd(events_overheads)
 
   controlMeans <- c(controlMeans, controlMean)
   controlSDs <- c(controlSDs, controlSD)
@@ -98,6 +114,8 @@ for (iperf_arg in IPERF_SETTINGS) {
   containerSDs <- c(containerSDs, containerSD)
   raw_latMeans <- c(raw_latMeans, raw_latMean)
   raw_latSDs <- c(raw_latSDs, raw_latSD)
+  events_overheadMeans <- c(events_overheadMeans, events_overheadMean)
+  events_overheadSDs <- c(events_overheadSDs, events_overheadSD)
 
   cat("traffic: ", iperf_arg,
       " control RTT: ", mean(controlRTTs), " (", sd(controlRTTs), ") ",
@@ -113,13 +131,25 @@ data <- data.frame(arg=IPERF_SETTINGS,
                    container_mean=containerMeans,
                    container_sd=containerSDs,
                    raw_latency_mean=raw_latMeans,
-                   raw_latency_sd=raw_latSDs)
+                   raw_latency_sd=raw_latSDs,
+                   events_overhead_mean=events_overheadMeans,
+                   events_overhead_sd=events_overheadSDs,
+                   stringsAsFactors=F)
 data
 
 yBounds <- c(0,max(data$control_mean, data$container_mean))
-pdf(file="test.pdf", width=5, height=5)
-plot(data$control_mean, type="b", ylim=yBounds)
-lines(data$container_mean, type="b", col="blue")
-lines(data$raw_latency_mean, type="b", col="red")
-lines(data$control_mean - data$raw_latency_mean, type="b", col="gray")
+pdf(file=paste(DATA_PATH,"rtts.pdf",sep=""), width=5, height=5)
+plot(data$control_mean, type="b", ylim=yBounds, col="gray",
+     main="RTT", xlab="traffic bandwidth", ylab="usec",
+     xaxt="n")
+drawArrows(data$control_mean, data$control_sd, "gray")
+lines(data$container_mean, type="b", col="black")
+drawArrows(data$container_mean, data$container_sd, "black")
+#lines(data$raw_latency_mean, type="b", col="blue")
+lines(data$container_mean - data$raw_latency_mean, type="b", col="red")
+lines(data$container_mean - data$raw_latency_mean - data$events_overhead_mean, type="b", col="blue")
+axis(1, at=seq(1,length(data$arg),by=1), labels=data$arg)
+legend("bottomright", legend=c("control", "container", "cont. raw adj", "cont. event adj"),
+                   col=c("gray", "black", "red", "blue"),
+                   lty=1, cex=0.8)
 dev.off()
