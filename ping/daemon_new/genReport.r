@@ -1,5 +1,6 @@
-#IPERF_SETTINGS <- c("1M", "10M", "100M", "1G", "10G")
-
+#
+# R script to parse data files, generate graphs, and dump a report
+#
 args <- commandArgs(trailingOnly=T)
 USAGE <- "Rscript genReport.r <path to data folder>"
 
@@ -20,21 +21,24 @@ print(IPERF_SETTINGS)
 #
 readPingFile <- function(filePath) {
   con <- file(filePath, "r")
+  timestamps <- c()
   rtts <- c()
+  linePattern <- "\\[([0-9\\.]+)\\] .* time=([0-9\\.]+) ms"
   while (T) {
     line <- readLines(con, n=1)
     if (length(line) == 0) {
       break
     }
-    time_str <- strsplit(line, "time=")[[1]]
-    if (length(time_str) == 2) {
-      # Convert to usec
-      time <- 1000 * as.numeric(strsplit(time_str[[2]], " ms")[[1]])
-      rtts <- c(rtts, time)
-    }
+    matches <- grep(linePattern, line, value=T)
+
+    ts <- as.numeric(sub(linePattern, "\\1", matches))
+    rtt <- as.numeric(sub(linePattern, "\\2", matches)) * 1000
+
+    timestamps <- c(timestamps, ts)
+    rtts <- c(rtts, rtt)
   }
   close(con)
-  rtts
+  data.frame(rtt=rtts, ts=timestamps)
 }
 
 #
@@ -42,27 +46,28 @@ readPingFile <- function(filePath) {
 #
 readLatencyFile <- function(filePath) {
   con <- file(filePath, "r")
+  timestamps <- c()
   raws <- c()
   ohs <- c()
+  linePattern <- "\\[([0-9\\.]+)\\] rtt raw_latency: ([0-9]+), events_overhead: ([0-9\\.]+),.*"
   while (T) {
     line <- readLines(con, n=1)
     if (length(line) == 0) {
       break
     }
-    break1 <- strsplit(line, "rtt raw_latency: ")[[1]]
-    if (length(break1) == 2) {
-      break2 <- strsplit(break1[[2]], ", events_overhead: ")[[1]]
-      raw_latency <- as.numeric(break2[[1]])
-      raws <- c(raws, raw_latency)
-      break3 <- strsplit(break2[[2]], ", adj_latency: ")[[1]]
-      if (length(break3) == 2) {
-        events_overhead <- as.numeric(break3[[1]])
-        ohs <- c(ohs, events_overhead)
-      }
-    }
+    matches <- grep(linePattern, line, value=T)
+
+    timestamp <- as.numeric(sub(linePattern, "\\1", matches))
+    raw <- as.numeric(sub(linePattern, "\\2", matches))
+    oh <- as.numeric(sub(linePattern, "\\3", matches))
+
+    timestamps <- c(timestamps, timestamp)
+    raws <- c(raws, raw)
+    ohs <- c(ohs, oh)
   }
+
   close(con)
-  data.frame(raw=raws, events_overhead=ohs)
+  data.frame(raw=raws, events_overhead=ohs, ts=timestamps)
 }
 
 #
@@ -73,6 +78,29 @@ drawArrows <- function(ys, sds, color) {
   arrows(seq(1, length(ys), by=1), ys - sds,
          seq(1, length(ys), by=1), ys + sds,
          length=0.05, angle=90, code=3, col=color)
+}
+
+#
+# Function to subtract latency from container RTTs
+#
+adjustContainer <- function(container, latency) {
+  adjs <- c()
+  l <- 2
+  lat_len <- length(latency$ts)
+  for (i in 1:nrow(container)) {
+    if (l < lat_len && container$ts[[i]] > latency$ts[[l]]) {
+      l <- l + 1
+    }
+    if (abs(latency$ts[[l]] - container$ts[[i]])
+        < abs(latency$ts[[l-1]] - container$ts[[i]])) {
+      ave_lat <- latency$raw[[l]]
+    } else {
+      ave_lat <- latency$raw[[l-1]]
+    }
+    adj <- container$rtt[[i]] - ave_lat
+    adjs <- c(adjs, adj)
+  }
+  data.frame(rtt=adjs, ts=container$ts)
 }
 
 #
@@ -108,36 +136,51 @@ for (iperf_arg in IPERF_SETTINGS) {
                                       iperf_arg, 
                                       ".latency",
                                       sep = ""))
+
+
   raw_lat <- latencies$raw
   events_overheads <- latencies$events_overhead
 
   cat(iperf_arg,":\n",sep="")
-  cat("  control num pings:  ", length(controlRTTs), "\n")
-  cat("  container num pings:", length(containerRTTs), "\n")
+  cat("  control num pings:  ", length(controlRTTs$rtt), "\n")
+  cat("  container num pings:", length(containerRTTs$rtt), "\n")
   cat("  latency num pings:  ", length(raw_lat), "\n")
 
-  controlMean <- mean(controlRTTs)
-  controlSD <- sd(controlRTTs)
-  containerMean <- mean(containerRTTs)
-  containerSD <- sd(containerRTTs)
+  controlMean <- mean(controlRTTs$rtt)
+  controlSD <- sd(controlRTTs$rtt)
+  containerMean <- mean(containerRTTs$rtt)
+  containerSD <- sd(containerRTTs$rtt)
   raw_latMean <- mean(raw_lat)
   raw_latSD <- sd(raw_lat)
   events_overheadMean <- mean(events_overheads)
   events_overheadSD <- sd(events_overheads)
 
+  containerAdjusted <- adjustContainer(containerRTTs, latencies)
+
   #
   # Generate time-sequences
   #
   pdf(file=paste(DATA_PATH,"seq_",iperf_arg,".pdf",sep=""), width=10, height=5)
-  plot(containerRTTs, type="l", col="black",
-    ylim=c(0,max(containerRTTs)), ylab="RTT (usec)",
+  plot(containerRTTs$ts, containerRTTs$rtt, type="l", col="black",
+    ylim=c(0,max(containerRTTs$rtt)), ylab="RTT (usec)",
     xlab="Sequence Number",
     main="Time Sequences")
-  lines(containerRTTs - raw_lat - events_overheads, type="l", col="blue")
-  lines(controlRTTs, type="l", col="red")
-  # lines(rep(controlMean, length(containerRTTs)), type="l", col="red")
-  legend("topright", legend=c("container", "container adjusted", "control"),
-                     col=c("black", "blue", "red"),
+
+  # Horizontal line at control mean because time sequences don't line up
+  lines(c(min(containerRTTs$ts), max(containerRTTs$ts)),
+        c(controlMean, controlMean),
+        type="l", col="blue")
+
+  lines(latencies$ts, latencies$raw, type="l", col="gray")
+
+  lines(containerAdjusted$ts, containerAdjusted$rtt, type="l", col="red")
+
+
+  #lines(containerRTTs$rtt - raw_lat - events_overheads, type="l", col="blue")
+  #lines(controlRTTs$ts, controlRTTs$rtt, type="l", col="red")
+
+  legend("topright", legend=c("container", "adjusted container", "raw latency", "control mean"),
+                     col=c("black", "red", "gray", "blue"),
                      lty=1, cex=0.8)
   dev.off()
 
