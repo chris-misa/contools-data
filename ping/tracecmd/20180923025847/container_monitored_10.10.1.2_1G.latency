@@ -1,0 +1,24 @@
+in_outer_dev:   eno1d1
+in_outer_func:  netif_receive_skb
+in_inner_func:  sys_exit_recvmsg
+out_inner_func: sys_enter_sendto
+out_outer_dev:  eno1d1
+out_outer_func: net_dev_xmit
+ping_pid: 10485
+Listening for events. . . will report in usec
+[1537708401.789365] rtt raw_latency: 86, events_overhead: 0.000000, adj_latency: 86.000000
+[1537708402.794748] rtt raw_latency: 110, events_overhead: 0.000000, adj_latency: 110.000000
+[1537708403.818738] rtt raw_latency: 97, events_overhead: 0.000000, adj_latency: 97.000000
+[1537708406.624318] rtt raw_latency: 106, events_overhead: 0.000000, adj_latency: 106.000000
+[1537708406.890692] rtt raw_latency: 84, events_overhead: 0.000000, adj_latency: 84.000000
+[1537708407.914764] rtt raw_latency: 161, events_overhead: 0.000000, adj_latency: 161.000000
+discarded recv: 1090
+[1537708795.758139] rtt raw_latency: 503, events_overhead: 0.000000, adj_latency: 503.000000
+[1537708866.677313] rtt raw_latency: 1029, events_overhead: 0.000000, adj_latency: 1029.000000
+[1537709174.153297] rtt raw_latency: 476, events_overhead: 0.000000, adj_latency: 476.000000
+
+Latency stats:
+send mean: 98 usec
+recv mean: 188 usec
+rtt  mean: 286 usec
+Done.
