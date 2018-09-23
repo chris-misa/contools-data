@@ -1,0 +1,133 @@
+in_outer_dev:   eno1d1
+in_outer_func:  netif_receive_skb
+in_inner_dev:   eth0
+in_inner_func:  netif_receive_skb
+out_inner_dev:  eth0
+out_inner_func: net_dev_xmit
+out_outer_dev:  eno1d1
+out_outer_func: net_dev_xmit
+events: netif_receive_skb netif_receive_skb net_dev_xmit net_dev_xmit
+trace_clock: global
+Getting ftrace event overhead. . .
+Squashed overhead routine!
+Estimated usec per event: 0.000000
+Listening for events. . . will report in usec
+[1537596150.347464] rtt raw_latency: 79, events_overhead: 0.000000, adj_latency: 79.000000
+[1537596152.395830] rtt raw_latency: 538, events_overhead: 0.000000, adj_latency: 538.000000
+[1537596154.443685] rtt raw_latency: 62, events_overhead: 0.000000, adj_latency: 62.000000
+[1537596161.615252] rtt raw_latency: 57, events_overhead: 0.000000, adj_latency: 57.000000
+[1537596166.731700] rtt raw_latency: 101, events_overhead: 0.000000, adj_latency: 101.000000
+[1537596171.851705] rtt raw_latency: 54, events_overhead: 0.000000, adj_latency: 54.000000
+[1537596173.899530] rtt raw_latency: 80, events_overhead: 0.000000, adj_latency: 80.000000
+[1537596174.923456] rtt raw_latency: 62, events_overhead: 0.000000, adj_latency: 62.000000
+[1537596177.995636] rtt raw_latency: 97, events_overhead: 0.000000, adj_latency: 97.000000
+[1537596186.188027] rtt raw_latency: 73, events_overhead: 0.000000, adj_latency: 73.000000
+[1537596200.523810] rtt raw_latency: 68, events_overhead: 0.000000, adj_latency: 68.000000
+[1537596201.547552] rtt raw_latency: 73, events_overhead: 0.000000, adj_latency: 73.000000
+[1537596205.643604] rtt raw_latency: 48, events_overhead: 0.000000, adj_latency: 48.000000
+[1537596209.739406] rtt raw_latency: 133, events_overhead: 0.000000, adj_latency: 133.000000
+[1537596213.835725] rtt raw_latency: 61, events_overhead: 0.000000, adj_latency: 61.000000
+[1537596214.859673] rtt raw_latency: 57, events_overhead: 0.000000, adj_latency: 57.000000
+[1537596215.883583] rtt raw_latency: 84, events_overhead: 0.000000, adj_latency: 84.000000
+[1537596230.219735] rtt raw_latency: 183, events_overhead: 0.000000, adj_latency: 183.000000
+[1537596233.291445] rtt raw_latency: 506, events_overhead: 0.000000, adj_latency: 506.000000
+[1537596236.363714] rtt raw_latency: 79, events_overhead: 0.000000, adj_latency: 79.000000
+discarded recv: 13220
+[1537596242.507411] rtt raw_latency: 58, events_overhead: 0.000000, adj_latency: 58.000000
+[1537596243.531469] rtt raw_latency: 91, events_overhead: 0.000000, adj_latency: 91.000000
+[1537596250.699907] rtt raw_latency: 474, events_overhead: 0.000000, adj_latency: 474.000000
+[1537596257.867500] rtt raw_latency: 69, events_overhead: 0.000000, adj_latency: 69.000000
+[1537596259.915429] rtt raw_latency: 136, events_overhead: 0.000000, adj_latency: 136.000000
+[1537596264.011419] rtt raw_latency: 178, events_overhead: 0.000000, adj_latency: 178.000000
+[1537596272.203465] rtt raw_latency: 99, events_overhead: 0.000000, adj_latency: 99.000000
+[1537596277.323742] rtt raw_latency: 90, events_overhead: 0.000000, adj_latency: 90.000000
+[1537596284.491571] rtt raw_latency: 111, events_overhead: 0.000000, adj_latency: 111.000000
+[1537596285.515438] rtt raw_latency: 55, events_overhead: 0.000000, adj_latency: 55.000000
+[1537596292.683829] rtt raw_latency: 84, events_overhead: 0.000000, adj_latency: 84.000000
+[1537596296.779551] rtt raw_latency: 78, events_overhead: 0.000000, adj_latency: 78.000000
+[1537596298.829944] rtt raw_latency: 51, events_overhead: 0.000000, adj_latency: 51.000000
+[1537596304.948584] rtt raw_latency: 34, events_overhead: 0.000000, adj_latency: 34.000000
+[1537596313.132323] rtt raw_latency: 43, events_overhead: 0.000000, adj_latency: 43.000000
+[1537596314.155451] rtt raw_latency: 139, events_overhead: 0.000000, adj_latency: 139.000000
+[1537596315.179503] rtt raw_latency: 62, events_overhead: 0.000000, adj_latency: 62.000000
+[1537596316.203419] rtt raw_latency: 56, events_overhead: 0.000000, adj_latency: 56.000000
+[1537596325.429289] rtt raw_latency: 41, events_overhead: 0.000000, adj_latency: 41.000000
+[1537596328.491495] rtt raw_latency: 68, events_overhead: 0.000000, adj_latency: 68.000000
+[1537596333.611423] rtt raw_latency: 52, events_overhead: 0.000000, adj_latency: 52.000000
+[1537596344.876080] rtt raw_latency: 831, events_overhead: 0.000000, adj_latency: 831.000000
+discarded recv: 1215
+[1537596357.163590] rtt raw_latency: 275, events_overhead: 0.000000, adj_latency: 275.000000
+[1537596360.238998] rtt raw_latency: 38, events_overhead: 0.000000, adj_latency: 38.000000
+[1537596362.297527] rtt raw_latency: 121, events_overhead: 0.000000, adj_latency: 121.000000
+[1537596371.499803] rtt raw_latency: 64, events_overhead: 0.000000, adj_latency: 64.000000
+[1537596373.547475] rtt raw_latency: 60, events_overhead: 0.000000, adj_latency: 60.000000
+[1537596375.595455] rtt raw_latency: 77, events_overhead: 0.000000, adj_latency: 77.000000
+[1537596377.643784] rtt raw_latency: 41, events_overhead: 0.000000, adj_latency: 41.000000
+[1537596378.667637] rtt raw_latency: 40, events_overhead: 0.000000, adj_latency: 40.000000
+[1537596384.811851] rtt raw_latency: 250, events_overhead: 0.000000, adj_latency: 250.000000
+[1537596386.859493] rtt raw_latency: 57, events_overhead: 0.000000, adj_latency: 57.000000
+[1537596387.883504] rtt raw_latency: 107, events_overhead: 0.000000, adj_latency: 107.000000
+[1537596390.955549] rtt raw_latency: 111, events_overhead: 0.000000, adj_latency: 111.000000
+[1537596394.027468] rtt raw_latency: 55, events_overhead: 0.000000, adj_latency: 55.000000
+[1537596403.243792] rtt raw_latency: 391, events_overhead: 0.000000, adj_latency: 391.000000
+[1537596405.291595] rtt raw_latency: 47, events_overhead: 0.000000, adj_latency: 47.000000
+[1537596406.315507] rtt raw_latency: 81, events_overhead: 0.000000, adj_latency: 81.000000
+[1537596409.387760] rtt raw_latency: 52, events_overhead: 0.000000, adj_latency: 52.000000
+[1537596413.483521] rtt raw_latency: 69, events_overhead: 0.000000, adj_latency: 69.000000
+[1537596421.643743] rtt raw_latency: 60, events_overhead: 0.000000, adj_latency: 60.000000
+[1537596429.835463] rtt raw_latency: 176, events_overhead: 0.000000, adj_latency: 176.000000
+[1537596438.027719] rtt raw_latency: 60, events_overhead: 0.000000, adj_latency: 60.000000
+[1537596441.102890] rtt raw_latency: 31, events_overhead: 0.000000, adj_latency: 31.000000
+[1537596451.340179] rtt raw_latency: 41, events_overhead: 0.000000, adj_latency: 41.000000
+[1537596454.412789] rtt raw_latency: 49, events_overhead: 0.000000, adj_latency: 49.000000
+[1537596457.483610] rtt raw_latency: 68, events_overhead: 0.000000, adj_latency: 68.000000
+[1537596464.652239] rtt raw_latency: 109, events_overhead: 0.000000, adj_latency: 109.000000
+[1537596466.699500] rtt raw_latency: 82, events_overhead: 0.000000, adj_latency: 82.000000
+[1537596474.891447] rtt raw_latency: 39, events_overhead: 0.000000, adj_latency: 39.000000
+[1537596477.963887] rtt raw_latency: 60, events_overhead: 0.000000, adj_latency: 60.000000
+[1537596482.059583] rtt raw_latency: 36, events_overhead: 0.000000, adj_latency: 36.000000
+[1537596490.251574] rtt raw_latency: 35, events_overhead: 0.000000, adj_latency: 35.000000
+[1537596494.347733] rtt raw_latency: 153, events_overhead: 0.000000, adj_latency: 153.000000
+[1537596496.395764] rtt raw_latency: 86, events_overhead: 0.000000, adj_latency: 86.000000
+[1537596507.659814] rtt raw_latency: 40, events_overhead: 0.000000, adj_latency: 40.000000
+[1537596511.755567] rtt raw_latency: 67, events_overhead: 0.000000, adj_latency: 67.000000
+[1537596514.827567] rtt raw_latency: 194, events_overhead: 0.000000, adj_latency: 194.000000
+[1537596517.899784] rtt raw_latency: 312, events_overhead: 0.000000, adj_latency: 312.000000
+[1537596521.995725] rtt raw_latency: 61, events_overhead: 0.000000, adj_latency: 61.000000
+[1537596523.019597] rtt raw_latency: 78, events_overhead: 0.000000, adj_latency: 78.000000
+[1537596526.091449] rtt raw_latency: 71, events_overhead: 0.000000, adj_latency: 71.000000
+[1537596534.251377] rtt raw_latency: 42, events_overhead: 0.000000, adj_latency: 42.000000
+[1537596543.467411] rtt raw_latency: 72, events_overhead: 0.000000, adj_latency: 72.000000
+[1537596548.587893] rtt raw_latency: 63, events_overhead: 0.000000, adj_latency: 63.000000
+[1537596549.612034] rtt raw_latency: 101, events_overhead: 0.000000, adj_latency: 101.000000
+[1537596552.683934] rtt raw_latency: 62, events_overhead: 0.000000, adj_latency: 62.000000
+[1537596555.755838] rtt raw_latency: 77, events_overhead: 0.000000, adj_latency: 77.000000
+[1537596561.901114] rtt raw_latency: 33, events_overhead: 0.000000, adj_latency: 33.000000
+[1537596565.995793] rtt raw_latency: 247, events_overhead: 0.000000, adj_latency: 247.000000
+[1537596571.115530] rtt raw_latency: 86, events_overhead: 0.000000, adj_latency: 86.000000
+[1537596572.139497] rtt raw_latency: 49, events_overhead: 0.000000, adj_latency: 49.000000
+[1537596582.382462] rtt raw_latency: 45, events_overhead: 0.000000, adj_latency: 45.000000
+[1537596583.403648] rtt raw_latency: 54, events_overhead: 0.000000, adj_latency: 54.000000
+[1537596585.451720] rtt raw_latency: 51, events_overhead: 0.000000, adj_latency: 51.000000
+[1537596591.595526] rtt raw_latency: 89, events_overhead: 0.000000, adj_latency: 89.000000
+[1537596595.691536] rtt raw_latency: 61, events_overhead: 0.000000, adj_latency: 61.000000
+[1537596598.793133] rtt raw_latency: 63, events_overhead: 0.000000, adj_latency: 63.000000
+[1537596602.860027] rtt raw_latency: 60, events_overhead: 0.000000, adj_latency: 60.000000
+[1537596605.931703] rtt raw_latency: 141, events_overhead: 0.000000, adj_latency: 141.000000
+[1537596607.979535] rtt raw_latency: 93, events_overhead: 0.000000, adj_latency: 93.000000
+[1537596613.099404] rtt raw_latency: 56, events_overhead: 0.000000, adj_latency: 56.000000
+[1537596616.171403] rtt raw_latency: 131, events_overhead: 0.000000, adj_latency: 131.000000
+[1537596618.219562] rtt raw_latency: 82, events_overhead: 0.000000, adj_latency: 82.000000
+[1537596619.243677] rtt raw_latency: 70, events_overhead: 0.000000, adj_latency: 70.000000
+[1537596623.339822] rtt raw_latency: 858, events_overhead: 0.000000, adj_latency: 858.000000
+[1537596624.363435] rtt raw_latency: 70, events_overhead: 0.000000, adj_latency: 70.000000
+[1537596628.460038] rtt raw_latency: 65, events_overhead: 0.000000, adj_latency: 65.000000
+[1537596629.483676] rtt raw_latency: 294, events_overhead: 0.000000, adj_latency: 294.000000
+[1537596641.772719] rtt raw_latency: 57, events_overhead: 0.000000, adj_latency: 57.000000
+[1537596649.963709] rtt raw_latency: 61, events_overhead: 0.000000, adj_latency: 61.000000
+
+Latency stats:
+send mean: 51 usec
+recv mean: 62 usec
+rtt  mean: 113 usec
+Done.
