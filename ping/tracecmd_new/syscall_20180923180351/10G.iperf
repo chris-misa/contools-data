@@ -1,0 +1,41 @@
+------------------------------------------------------------
+Server listening on TCP port 5001
+TCP window size: 85.3 KByte (default)
+------------------------------------------------------------
+------------------------------------------------------------
+Client connecting to 10.10.1.2, TCP port 5001
+TCP window size: 1.87 MByte (default)
+------------------------------------------------------------
+[  3] local 10.10.1.1 port 46398 connected with 10.10.1.2 port 5001 (peer 2.0.10-alpha)
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-100.0 sec  78.5 GBytes  6.75 Gbits/sec
+[  3] 100.0-200.0 sec  77.6 GBytes  6.66 Gbits/sec
+[  3] 200.0-300.0 sec  75.6 GBytes  6.49 Gbits/sec
+[  3] 300.0-400.0 sec  79.8 GBytes  6.86 Gbits/sec
+[  3] 400.0-500.0 sec  80.3 GBytes  6.90 Gbits/sec
+[  3] 500.0-600.0 sec  78.1 GBytes  6.71 Gbits/sec
+[  3] 600.0-700.0 sec  80.1 GBytes  6.88 Gbits/sec
+[  3] 700.0-800.0 sec  78.7 GBytes  6.76 Gbits/sec
+[  3] 800.0-900.0 sec  74.2 GBytes  6.38 Gbits/sec
+[  3] 900.0-1000.0 sec  75.4 GBytes  6.47 Gbits/sec
+[  3] 1000.0-1100.0 sec  77.5 GBytes  6.66 Gbits/sec
+[  3] 1100.0-1200.0 sec  79.1 GBytes  6.79 Gbits/sec
+[  3] 1200.0-1300.0 sec  76.5 GBytes  6.57 Gbits/sec
+[  3] 1300.0-1400.0 sec  76.5 GBytes  6.57 Gbits/sec
+[  3] 1400.0-1500.0 sec  75.2 GBytes  6.46 Gbits/sec
+[  3] 1500.0-1600.0 sec  82.6 GBytes  7.09 Gbits/sec
+[  3] 1600.0-1700.0 sec  79.2 GBytes  6.80 Gbits/sec
+[  3] 1700.0-1800.0 sec  79.2 GBytes  6.81 Gbits/sec
+[  3] 1800.0-1900.0 sec  76.3 GBytes  6.55 Gbits/sec
+[  3] 1900.0-2000.0 sec  76.3 GBytes  6.55 Gbits/sec
+[  3] 2000.0-2100.0 sec  77.7 GBytes  6.68 Gbits/sec
+[  3] 2100.0-2200.0 sec  79.6 GBytes  6.84 Gbits/sec
+[  3] 2200.0-2300.0 sec  75.3 GBytes  6.47 Gbits/sec
+[  3] 2300.0-2400.0 sec  80.1 GBytes  6.88 Gbits/sec
+[  3] 2400.0-2500.0 sec  77.0 GBytes  6.62 Gbits/sec
+[  3] 2500.0-2600.0 sec  77.1 GBytes  6.62 Gbits/sec
+[  3] 2600.0-2700.0 sec  76.1 GBytes  6.54 Gbits/sec
+[  3] 2700.0-2800.0 sec  77.1 GBytes  6.62 Gbits/sec
+[  3] 2800.0-2900.0 sec  75.0 GBytes  6.44 Gbits/sec
+[  3] 2900.0-3000.0 sec  76.1 GBytes  6.54 Gbits/sec
+[  3]  0.0-3096.3 sec  2.34 TBytes  6.66 Gbits/sec
