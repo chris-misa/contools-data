@@ -296,7 +296,10 @@ data
 #
 # Generate graph of rtt measurements vs. traffic load
 #
-yBounds <- c(0,max(data$control_mean, data$container_mean))
+yBounds <- c(0,max(data$control_mean + data$control_err,
+                   data$container_mean + data$container_err,
+                   data$container_control_mean + data$container_control_err,
+                   data$container_adj_mean + data$container_adj_err))
 pdf(file=paste(DATA_PATH,"rtts.pdf",sep=""), width=5, height=5)
 plot(data$control_mean, type="b", ylim=yBounds, col="gray",
      main="RTT", xlab="traffic bandwidth", ylab="usec",
