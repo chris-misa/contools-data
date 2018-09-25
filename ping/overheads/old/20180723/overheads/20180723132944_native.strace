@@ -1,0 +1,17 @@
+17241 1532374226.994820 execve("iputils/ping", ["iputils/ping", "-c", "5", "216.58.216.142"], [/* 34 vars */]) = 0 <0.000173>
+17241 1532374226.997077 socket(PF_INET, SOCK_DGRAM, IPPROTO_ICMP) = -1 EACCES (Permission denied) <0.000015>
+17241 1532374226.997110 socket(PF_INET, SOCK_RAW, IPPROTO_ICMP) = 3 <0.000011>
+17241 1532374226.997134 socket(PF_INET6, SOCK_DGRAM, IPPROTO_ICMPV6) = -1 EACCES (Permission denied) <0.000011>
+17241 1532374226.997158 socket(PF_INET6, SOCK_RAW, IPPROTO_ICMPV6) = 4 <0.000010>
+17241 1532374226.997245 socket(PF_INET, SOCK_DGRAM, IPPROTO_IP) = 5 <0.000012>
+17241 1532374226.997627 sendto(3, "\10\0\311\21CY\0\1\322,V[\0\0\0\0\3658\17\0\0\0\0\0\20\21\22\23\24\25\26\27"..., 64, 0, {sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, 16) = 64 <0.000024>
+17241 1532374226.997695 recvmsg(3, {msg_name(16)={sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, msg_iov(1)=[{"E\0\0T\0\0\0\0006\1\270\210\330:\330\216\200n\232\351\0\0\321\21CY\0\1\322,V["..., 192}], msg_controllen=32, [{cmsg_len=32, cmsg_level=SOL_SOCKET, cmsg_type=0x1d /* SCM_??? */}], msg_flags=0}, 0) = 84 <0.029798>
+17241 1532374227.998684 sendto(3, "\10\0\262\fCY\0\2\323,V[\0\0\0\0\v=\17\0\0\0\0\0\20\21\22\23\24\25\26\27"..., 64, 0, {sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, 16) = 64 <0.000023>
+17241 1532374227.998779 recvmsg(3, {msg_name(16)={sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, msg_iov(1)=[{"E\0\0T\0\0\0\0006\1\270\210\330:\330\216\200n\232\351\0\0\272\fCY\0\2\323,V["..., 192}], msg_controllen=32, [{cmsg_len=32, cmsg_level=SOL_SOCKET, cmsg_type=0x1d /* SCM_??? */}], msg_flags=0}, 0) = 84 <0.029844>
+17241 1532374228.998844 sendto(3, "\10\0\10\vCY\0\3\324,V[\0\0\0\0\264=\17\0\0\0\0\0\20\21\22\23\24\25\26\27"..., 64, 0, {sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, 16) = 64 <0.000022>
+17241 1532374228.998915 recvmsg(3, {msg_name(16)={sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, msg_iov(1)=[{"E\0\0T\0\0\0\0006\1\270\210\330:\330\216\200n\232\351\0\0\20\vCY\0\3\324,V["..., 192}], msg_controllen=32, [{cmsg_len=32, cmsg_level=SOL_SOCKET, cmsg_type=0x1d /* SCM_??? */}], msg_flags=0}, 0) = 84 <0.029766>
+17241 1532374229.999840 sendto(3, "\10\0#\6CY\0\4\325,V[\0\0\0\0\230A\17\0\0\0\0\0\20\21\22\23\24\25\26\27"..., 64, 0, {sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, 16) = 64 <0.000027>
+17241 1532374230.000090 recvmsg(3, {msg_name(16)={sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, msg_iov(1)=[{"E\0\0T\0\0\0\0006\1\270\210\330:\330\216\200n\232\351\0\0+\6CY\0\4\325,V["..., 192}], msg_controllen=32, [{cmsg_len=32, cmsg_level=SOL_SOCKET, cmsg_type=0x1d /* SCM_??? */}], msg_flags=0}, 0) = 84 <0.029847>
+17241 1532374231.000179 sendto(3, "\10\0&FCY\0\5\327,V[\0\0\0\0\242\0\0\0\0\0\0\0\20\21\22\23\24\25\26\27"..., 64, 0, {sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, 16) = 64 <0.000041>
+17241 1532374231.000324 recvmsg(3, {msg_name(16)={sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("216.58.216.142")}, msg_iov(1)=[{"E\0\0T\0\0\0\0006\1\270\210\330:\330\216\200n\232\351\0\0.FCY\0\5\327,V["..., 192}], msg_controllen=32, [{cmsg_len=32, cmsg_level=SOL_SOCKET, cmsg_type=0x1d /* SCM_??? */}], msg_flags=0}, 0) = 84 <0.029793>
+17241 1532374231.030455 +++ exited with 0 +++
