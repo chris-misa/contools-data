@@ -114,6 +114,13 @@ adjustContainer <- function(container, latency) {
 }
 
 #
+# Computes the max of distribution
+#
+getMaxDist <- function(df) {
+  df$mids[which.max(df$counts)]
+}
+
+#
 # collect means and deviations
 #
 controlMeans <- c()
@@ -186,18 +193,42 @@ for (iperf_arg in IPERF_SETTINGS) {
 
   containerAdjusted <- adjustContainer(containerRTTs, latencies)
 
-  controlMean <- mean(controlRTTs$rtt)
+  #
+  # Generate histogram
+  #
+  xBnd <- range(controlRTTs$rtt,
+                containerRTTs$rtt,
+                nativeMonitoredRTTs$rtt,
+                containerAdjusted$rtt)
+  mBreaks <- seq(xBnd[[1]],xBnd[[2]],1)
+  pdf(file=paste(DATA_PATH,"hist_",iperf_arg,".pdf",sep=""), width=10,height=5)
+  controlRTTHist <- hist(controlRTTs$rtt, breaks=mBreaks, plot=F)
+  containerRTTHist <- hist(containerRTTs$rtt, breaks=mBreaks, plot=F)
+  nativeMonitoredHist <- hist(nativeMonitoredRTTs$rtt, breaks=mBreaks, plot=F)
+  containerAdjustedHist <- hist(containerAdjusted$rtt, breaks=mBreaks, plot=F)
+  yMax <- max(controlRTTHist$counts,
+              containerRTTHist$counts,
+              nativeMonitoredHist$counts,
+              containerAdjustedHist$counts)
+  plot(xBnd, c(0,yMax), type="n")
+  lines(mBreaks[-1], controlRTTHist$counts, type="l", col="gray")
+  lines(mBreaks[-1], containerRTTHist$counts, type="l", col="black")
+  lines(mBreaks[-1], nativeMonitoredHist$counts, type="l", col="blue")
+  lines(mBreaks[-1], containerAdjustedHist$counts, type="l", col="red")
+  dev.off()
+
+  controlMean <- getMaxDist(controlRTTHist)
   controlSD <- sd(controlRTTs$rtt)
-  containerControlMean <- mean(containerControlRTTs$rtt)
+  containerControlMean <- median(containerControlRTTs$rtt)
   containerControlSD <- sd(containerControlRTTs$rtt)
-  containerMean <- mean(containerRTTs$rtt)
+  containerMean <- getMaxDist(containerRTTHist)
   containerSD <- sd(containerRTTs$rtt)
-  raw_latMean <- mean(raw_lat)
+  raw_latMean <- median(raw_lat)
   raw_latSD <- sd(raw_lat)
-  events_overheadMean <- mean(events_overheads)
+  events_overheadMean <- median(events_overheads)
   events_overheadSD <- sd(events_overheads)
   if (!is.null(nativeMonitoredRTTs)) {
-    nativeMonitoredMean <- mean(nativeMonitoredRTTs$rtt)
+    nativeMonitoredMean <- getMaxDist(nativeMonitoredHist)
     nativeMonitoredSD <- sd(nativeMonitoredRTTs$rtt)
   } else {
     nativeMonitoredMean <- 0
@@ -216,7 +247,7 @@ for (iperf_arg in IPERF_SETTINGS) {
   events_overheadSDs <- c(events_overheadSDs, events_overheadSD)
   nativeMonitoredMeans <- c(nativeMonitoredMeans, nativeMonitoredMean)
   nativeMonitoredSDs <- c(nativeMonitoredSDs, nativeMonitoredSD)
-  containerAdjMeans <- c(containerAdjMeans, mean(containerAdjusted$rtt))
+  containerAdjMeans <- c(containerAdjMeans, getMaxDist(containerAdjustedHist))
   containerAdjSDs <- c(containerAdjSDs, sd(containerAdjusted$rtt))
   ns <- c(ns, min(controlRTTs$rtt, containerControlRTTs$rtt, raw_lat))
 
@@ -253,29 +284,6 @@ for (iperf_arg in IPERF_SETTINGS) {
                      lty=1, cex=0.8)
   dev.off()
 
-  #
-  # Generate histogram
-  #
-  xBnd <- range(controlRTTs$rtt,
-                containerRTTs$rtt,
-                nativeMonitoredRTTs$rtt,
-                containerAdjusted$rtt)
-  mBreaks <- seq(xBnd[[1]],xBnd[[2]],1)
-  pdf(file=paste(DATA_PATH,"hist_",iperf_arg,".pdf",sep=""), width=10,height=5)
-  controlRTTHist <- hist(controlRTTs$rtt, breaks=mBreaks, plot=F)
-  containerRTTHist <- hist(containerRTTs$rtt, breaks=mBreaks, plot=F)
-  nativeMonitoredHist <- hist(nativeMonitoredRTTs$rtt, breaks=mBreaks, plot=F)
-  containerAdjustedHist <- hist(containerAdjusted$rtt, breaks=mBreaks, plot=F)
-  yMax <- max(controlRTTHist$counts,
-              containerRTTHist$counts,
-              nativeMonitoredHist$counts,
-              containerAdjustedHist$counts)
-  plot(xBnd, c(0,yMax), type="n")
-  lines(mBreaks[-1], controlRTTHist$counts, type="l", col="gray")
-  lines(mBreaks[-1], containerRTTHist$counts, type="l", col="black")
-  lines(mBreaks[-1], nativeMonitoredHist$counts, type="l", col="blue")
-  lines(mBreaks[-1], containerAdjustedHist$counts, type="l", col="red")
-  dev.off()
 }
 
 #
@@ -325,9 +333,9 @@ yBounds <- c(min(data$control_mean - data$control_err,
                    data$container_mean + data$container_err,
                    data$container_control_mean + data$container_control_err,
                    data$container_adj_mean + data$container_adj_err))
-pdf(file=paste(DATA_PATH,"rtts_mean.pdf",sep=""), width=5, height=5)
+pdf(file=paste(DATA_PATH,"rtts_median.pdf",sep=""), width=5, height=5)
 plot(data$control_mean, type="b", ylim=yBounds, col="gray",
-     main="RTT (Mean)", xlab="traffic bandwidth", ylab="usec",
+     main="RTT (Median)", xlab="traffic bandwidth", ylab="usec",
      xaxt="n")
 drawArrows(data$control_mean, data$control_err, "gray")
 if (!is.null(data$native_monitored_mean[[1]])) {

@@ -1,4 +1,4 @@
-confidence <- 0.50
+confidence <- 0.90
 
 args <- commandArgs(trailingOnly=T)
 USAGE <- "Rscript genReport.r <path to data folder>"
@@ -60,6 +60,7 @@ nativeMeans <- c()
 nativeSDs <- c()
 containerMeans <- c()
 containerSDs <- c()
+ns <- c()
 for (s in SETTINGS) {
   native <- readPingFile(paste(DATA_PATH, "native_control_", TARGET, "_", s, ".ping", sep=""))
   container <- readPingFile(paste(DATA_PATH, "container_monitored_", TARGET, "_", s, ".ping", sep=""))
@@ -68,14 +69,17 @@ for (s in SETTINGS) {
   nativeSDs <- c(nativeSDs, sd(native))
   containerMeans <- c(containerMeans, mean(container))
   containerSDs <- c(containerSDs, sd(container))
+  ns <- c(ns, length(native))
 }
 
 #
 # Build confidence intervals
 #
 a <- confidence + 0.5 * (1.0 - confidence)
-nativeErrs <- qt(a, df=length(nativeMeans)-1) * nativeSDs / sqrt(length(nativeMeans))
-containerErrs <- qt(a, df=length(containerMeans)-1) * containerSDs / sqrt(length(containerMeans))
+n <- min(ns)
+t_an <- qt(a, df=length(nativeMeans)-1)
+nativeErrs <- t_an * nativeSDs / sqrt(length(nativeMeans))
+containerErrs <- t_an * containerSDs / sqrt(length(containerMeans))
 
 #
 # Graph means with confidence intervals
