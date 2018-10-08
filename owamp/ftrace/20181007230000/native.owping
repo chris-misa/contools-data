@@ -1,0 +1,23 @@
+Approximately 1003.2 seconds until results available
+
+--- owping statistics from [node2-link-1]:8945 to [10.10.1.1]:37020 ---
+SID:	0a0a0101df6562058728b87d69324303
+first:	2018-10-07T22:56:39.699
+last:	2018-10-07T23:13:18.699
+1000 sent, 0 lost (0.000%), 0 duplicates
+one-way delay min/median/max = 8.85/9.4/12 ms, (err=2.72 ms)
+one-way jitter = 2.6 ms (P95-P50)
+TTL not reported
+no reordering
+
+
+--- owping statistics from [10.10.1.1]:59266 to [node2-link-1]:8928 ---
+SID:	0a0a0102df6562058a35e1acdf55d11e
+first:	2018-10-07T22:56:39.699
+last:	2018-10-07T23:13:18.699
+1000 sent, 0 lost (0.000%), 0 duplicates
+one-way delay min/median/max = 8.41/11.1/11.8 ms, (err=2.72 ms)
+one-way jitter = 0.5 ms (P95-P50)
+TTL not reported
+no reordering
+
