@@ -1,0 +1,17 @@
+------------------------------------------------------------
+Server listening on TCP port 5001
+TCP window size: 85.3 KByte (default)
+------------------------------------------------------------
+------------------------------------------------------------
+Client connecting to 10.10.1.2, TCP port 5001
+TCP window size:  408 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.1.1 port 54920 connected with 10.10.1.2 port 5001 (peer 2.0.10-alpha)
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-100.0 sec  12.8 MBytes  1.07 Mbits/sec
+[  3] 100.0-200.0 sec  12.4 MBytes  1.04 Mbits/sec
+[  3] 200.0-300.0 sec  12.5 MBytes  1.05 Mbits/sec
+[  3] 300.0-400.0 sec  12.6 MBytes  1.06 Mbits/sec
+[  3] 400.0-500.0 sec  12.4 MBytes  1.04 Mbits/sec
+[  3] 500.0-600.0 sec  12.5 MBytes  1.05 Mbits/sec
+[  3]  0.0-645.1 sec  80.8 MBytes  1.05 Mbits/sec

@@ -53,12 +53,21 @@ drawArrowsCenters <- function(ys, sds, color, centers) {
          length=0.05, angle=90, code=3, col=color)
 }
 
+
+mode <- function(data) {
+  brks <- seq(min(data), max(data), 1)
+  hst <- hist(data, breaks=brks, plot=F)
+  hst$mids[which.max(hst$counts)]
+}
+
 #
 # Start main work
 #
 nativeMeans <- c()
+nativeModes <- c()
 nativeSDs <- c()
 containerMeans <- c()
+containerModes <- c()
 containerSDs <- c()
 ns <- c()
 for (s in SETTINGS) {
@@ -66,10 +75,13 @@ for (s in SETTINGS) {
   container <- readPingFile(paste(DATA_PATH, "container_monitored_", TARGET, "_", s, ".ping", sep=""))
 
   nativeMeans <- c(nativeMeans, mean(native))
+  nativeModes <- c(nativeModes, mode(native))
   nativeSDs <- c(nativeSDs, sd(native))
   containerMeans <- c(containerMeans, mean(container))
+  containerModes <- c(containerModes, mode(container))
   containerSDs <- c(containerSDs, sd(container))
   ns <- c(ns, length(native))
+
 }
 
 #
@@ -88,9 +100,9 @@ pdf(file=paste(DATA_PATH, "mean_summary.pdf", sep=""), width=10, height=5)
 yBounds <- c(min(nativeMeans - nativeErrs, containerMeans - containerErrs),
              max(nativeMeans + nativeErrs, containerMeans + containerErrs))
 par(mar=c(7,4,4,4))
-plot(nativeMeans, type="p", ylim=yBounds, col="gray",
-     main="Mean RTT Summary", xlab="", ylab="usec", xaxt="n")
-drawArrows(nativeMeans, nativeErrs, "gray")
+plot(nativeMeans, type="p", ylim=yBounds, col="deeppink",
+     main="RTT Mean Summary", xlab="", ylab="usec", xaxt="n")
+drawArrows(nativeMeans, nativeErrs, "deeppink")
 
 lines(containerMeans, type="p", col="black")
 drawArrows(containerMeans, containerErrs, "black")
@@ -98,7 +110,7 @@ drawArrows(containerMeans, containerErrs, "black")
 axis(1, at=seq(1, length(SETTINGS), by=1), labels=SETTINGS, las=2)
 mtext("ping settings (i: interval in sec, s: payload size in bytes)", 1, 5)
 legend("bottomright", legend=c("native", "container"),
-       col=c("gray", "black"), lty=1, cex=0.8)
+       col=c("deeppink", "black"), lty=1, cex=0.8)
 dev.off()
 
 #
@@ -111,7 +123,45 @@ diffsErrors <- qt(a, df=length(diffs)-1) * diffsSDs / sqrt(length(diffs))
 pdf(file=paste(DATA_PATH, "mean_diff.pdf", sep=""), width=10, height=5)
 yBounds <- c(0, max(diffs + diffsErrors))
 par(mar=c(7,4,4,4))
-barCenters <- barplot(diffs, main="Container - Native RTT Difference", ylim=yBounds,
+barCenters <- barplot(diffs, main="RTT Mean Difference", ylim=yBounds,
+  xlab="", ylab="usec",
+  names.arg=SETTINGS, las=2)
+drawArrowsCenters(diffs, diffsErrors, "black", barCenters)
+mtext("ping settings (i: interval in sec, s: payload size in bytes)", 1, 5)
+dev.off()
+
+
+#
+# Graph modes with confidence intervals
+#
+pdf(file=paste(DATA_PATH, "mode_summary.pdf", sep=""), width=10, height=5)
+yBounds <- c(min(nativeModes - nativeErrs, containerModes - containerErrs),
+             max(nativeModes + nativeErrs, containerModes + containerErrs))
+par(mar=c(7,4,4,4))
+plot(nativeModes, type="p", ylim=yBounds, col="deeppink",
+     main="RTT Mode Summary", xlab="", ylab="usec", xaxt="n")
+drawArrows(nativeModes, nativeErrs, "deeppink")
+
+lines(containerModes, type="p", col="black")
+drawArrows(containerModes, containerErrs, "black")
+
+axis(1, at=seq(1, length(SETTINGS), by=1), labels=SETTINGS, las=2)
+mtext("ping settings (i: interval in sec, s: payload size in bytes)", 1, 5)
+legend("bottomright", legend=c("native", "container"),
+       col=c("deeppink", "black"), lty=1, cex=0.8)
+dev.off()
+
+
+#
+# Graph mode differences
+#
+diffs <- containerModes - nativeModes
+diffsSDs <- containerSDs + nativeSDs
+diffsErrors <- qt(a, df=length(diffs)-1) * diffsSDs / sqrt(length(diffs))
+pdf(file=paste(DATA_PATH, "mode_diff.pdf", sep=""), width=10, height=5)
+yBounds <- c(0, max(diffs + diffsErrors))
+par(mar=c(7,4,4,4))
+barCenters <- barplot(diffs, main="RTT Mode Difference", ylim=yBounds,
   xlab="", ylab="usec",
   names.arg=SETTINGS, las=2)
 drawArrowsCenters(diffs, diffsErrors, "black", barCenters)

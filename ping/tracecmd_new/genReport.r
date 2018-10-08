@@ -13,7 +13,7 @@ if (length(args) != 1) {
 }
 
 DATA_PATH <- args[1]
-TARGET <- "10.10.1.2"
+TARGET <- "151.202.0.85"
 IPERF_SETTINGS <- scan(file=paste(DATA_PATH,"file_list",sep=""),
                        what=character(),
                        sep="\n")
@@ -240,7 +240,7 @@ for (iperf_arg in IPERF_SETTINGS) {
           type="l", col="blue")
   }
 
-  lines(latencies$ts, latencies$raw, type="l", col="gray")
+  lines(latencies$ts, latencies$raw, type="l", col="green")
 
   lines(containerAdjusted$ts, containerAdjusted$rtt, type="l", col="red")
 
@@ -249,7 +249,7 @@ for (iperf_arg in IPERF_SETTINGS) {
   #lines(controlRTTs$ts, controlRTTs$rtt, type="l", col="red")
 
   legend("topright", legend=c("container", "adjusted container", "raw latency", "native"),
-                     col=c("black", "red", "gray", "blue"),
+                     col=c("black", "red", "green", "blue"),
                      lty=1, cex=0.8)
   dev.off()
 
@@ -271,7 +271,7 @@ for (iperf_arg in IPERF_SETTINGS) {
               nativeMonitoredHist$counts,
               containerAdjustedHist$counts)
   plot(xBnd, c(0,yMax), type="n")
-  lines(mBreaks[-1], controlRTTHist$counts, type="l", col="gray")
+  lines(mBreaks[-1], controlRTTHist$counts, type="l", col="green")
   lines(mBreaks[-1], containerRTTHist$counts, type="l", col="black")
   lines(mBreaks[-1], nativeMonitoredHist$counts, type="l", col="blue")
   lines(mBreaks[-1], containerAdjustedHist$counts, type="l", col="red")
@@ -326,25 +326,27 @@ yBounds <- c(min(data$control_mean - data$control_err,
                    data$container_control_mean + data$container_control_err,
                    data$container_adj_mean + data$container_adj_err))
 pdf(file=paste(DATA_PATH,"rtts_mean.pdf",sep=""), width=5, height=5)
-plot(data$control_mean, type="b", ylim=yBounds, col="gray",
-     main="RTT (Mean)", xlab="traffic bandwidth", ylab="usec",
-     xaxt="n")
-drawArrows(data$control_mean, data$control_err, "gray")
+plot(data$control_mean, type="b", ylim=yBounds, col="green",
+     main="RTT Mean", xlab="traffic bandwidth", ylab="usec",
+     xaxt="n",
+     lty=3)
+drawArrows(data$control_mean, data$control_err, "green")
 if (!is.null(data$native_monitored_mean[[1]])) {
-  lines(data$native_monitored_mean, type="b", col="blue")
+  lines(data$native_monitored_mean, type="b", col="blue", lty=2)
 }
-lines(data$container_mean, type="b", col="black")
+lines(data$container_mean, type="b", col="black", lty=1)
 drawArrows(data$container_mean, data$container_err, "black")
 
-lines(data$container_control_mean, type="b", col="purple")
+lines(data$container_control_mean, type="b", col="purple", lty=3)
 drawArrows(data$container_control_mean, data$container_control_err, "purple")
 
-lines(data$container_adj_mean, type="b", col="red")
+lines(data$container_adj_mean, type="b", col="red", lty=1)
 drawArrows(data$container_adj_mean, data$container_adj_err, "red")
 
 axis(1, at=seq(1,length(data$arg),by=1), labels=data$arg)
 legend("topleft", legend=c("container", "container adjusted", "native control", "un-monitored native", "un-monitored container"),
-                   col=c("black", "red", "blue", "gray", "purple"),
-                   lty=1, cex=0.8)
+                   col=c("black", "red", "blue", "green", "purple"),
+                   lty=c(1, 1, 2, 3, 3), cex=0.8,
+                   bg="white")
 dev.off()
 
