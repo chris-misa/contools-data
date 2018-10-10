@@ -13,7 +13,7 @@ if (length(args) != 1) {
 }
 
 DATA_PATH <- args[1]
-TARGET <- "151.202.0.85"
+TARGET <- "10.10.1.2"
 IPERF_SETTINGS <- scan(file=paste(DATA_PATH,"file_list",sep=""),
                        what=character(),
                        sep="\n")
@@ -311,6 +311,7 @@ data <- data.frame(arg=IPERF_SETTINGS,
                    container_adj_mean=containerAdjMeans,
                    container_adj_sd=containerAdjSDs,
                    container_adj_err=containerAdjErrors,
+                   control_adj_diff=containerAdjMeans - controlMeans,
                    stringsAsFactors=F)
 data
 
