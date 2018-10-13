@@ -29,7 +29,7 @@ readOwpingFile <- function(filePath) {
   con <- file(filePath, "r")
   outBound <- data.frame(delay = c(), ts = c())
   inBound <- data.frame(delay = c(), ts = c())
-  linePattern <- "seq_no=([0-9]+) .* sent=([0-9\\.]+) recv=([0-9\\.]+)"
+  linePattern <- "seq_no=([0-9]+) delay=([0-9\\.e+]+) .* sent=([0-9\\.]+) recv=([0-9\\.]+)"
   first <- 0
   while (T) {
     line <- readLines(con, n=1)
@@ -41,8 +41,8 @@ readOwpingFile <- function(filePath) {
 
     if (length(matches) > 0) {
       index <- as.numeric(sub(linePattern, "\\1", matches))
-      sendRaw <- as.numeric(sub(linePattern, "\\2", matches))
-      recvRaw <- as.numeric(sub(linePattern, "\\3", matches))
+      sendRaw <- as.numeric(sub(linePattern, "\\3", matches))
+      recvRaw <- as.numeric(sub(linePattern, "\\4", matches))
       ts <- 0.5 * (sendRaw + recvRaw)
 
       if (first == 0 && index == 0) {
@@ -51,7 +51,8 @@ readOwpingFile <- function(filePath) {
         first <- 2
       }
 
-      rawDelayUsec = (recvRaw - sendRaw) * 1000000
+      # rawDelayUsec = (recvRaw - sendRaw) * 1000000
+      rawDelayUsec <- as.numeric(sub(linePattern, "\\2", matches))
 
       if (first == 1) {
         outBound <- data.frame(delay = c(outBound$delay, rawDelayUsec),
@@ -201,10 +202,10 @@ for (iperf_arg in IPERF_SETTINGS) {
                                   containerMonitored$out_bound.ts,
                                   latency$out_bound.latency,
                                   latency$out_bound.ts)
-  adjusted_in <- adjustContainer(containerMonitored$out_bound.delay,
-                                 containerMonitored$out_bound.ts,
-                                 latency$out_bound.latency,
-                                 latency$out_bound.ts)
+  adjusted_in <- adjustContainer(containerMonitored$in_bound.delay,
+                                 containerMonitored$in_bound.ts,
+                                 latency$in_bound.latency,
+                                 latency$in_bound.ts)
   containerAdjusted = data.frame(out_bound.delay=adjusted_out$adjusted,
                                  out_bound.ts=adjusted_out$ts,
                                  in_bound.delay=adjusted_in$adjusted,
@@ -221,14 +222,34 @@ for (iperf_arg in IPERF_SETTINGS) {
   #
   # Generate time-sequences
   #
-  pdf(file=paste(DATA_PATH,"seq_",iperf_arg,".pdf",sep=""), width=10, height=5)
+  # OUTBOUND
+  #
+  yBounds <- range(containerMonitored$out_bound.delay, nativeMonitored$out_bound.delay, containerAdjusted$out_bound.delay)
+  xBounds <- range(containerMonitored$out_bound.ts, nativeMonitored$out_bound.ts, containerAdjusted$out_bound.ts)
+  pdf(file=paste(DATA_PATH,"outbound_seq_",iperf_arg,".pdf",sep=""), width=10, height=5)
   plot(containerMonitored$out_bound.ts, containerMonitored$out_bound.delay, type="l", col="black",
-    ylim=c(0,max(containerMonitored$out_bound.delay)), ylab="Out-bound time (usec)",
-    xlab="Time Stamp",
+    ylim=yBounds, ylab="Out-bound time (usec)",
+    xlim=xBounds, xlab="Time Stamp",
     main="Time Sequences")
   lines(nativeMonitored$out_bound.ts, nativeMonitored$out_bound.delay, type="l", col="blue")
-  lines(latency$out_bound.ts, latency$out_bound.latency, type="l", col="green")
   lines(containerAdjusted$out_bound.ts, containerAdjusted$out_bound.delay, type="l", col="red")
+  legend("topright", legend=c("container", "adjusted container", "raw latency", "native"),
+                     col=c("black", "red", "green", "blue"),
+                     lty=1, cex=0.8)
+  dev.off()
+
+  #
+  # INBOUND
+  #
+  yBounds <- range(containerMonitored$in_bound.delay, nativeMonitored$in_bound.delay, containerAdjusted$in_bound.delay)
+  xBounds <- range(containerMonitored$in_bound.ts, nativeMonitored$in_bound.ts, containerAdjusted$in_bound.ts)
+  pdf(file=paste(DATA_PATH,"inbound_seq_",iperf_arg,".pdf",sep=""), width=10, height=5)
+  plot(containerMonitored$in_bound.ts, containerMonitored$in_bound.delay, type="l", col="black",
+    ylim=yBounds, ylab="In-bound time (usec)",
+    xlim=xBounds, xlab="Time Stamp",
+    main="Time Sequences")
+  lines(nativeMonitored$in_bound.ts, nativeMonitored$in_bound.delay, type="l", col="blue")
+  lines(containerAdjusted$in_bound.ts, containerAdjusted$in_bound.delay, type="l", col="red")
   legend("topright", legend=c("container", "adjusted container", "raw latency", "native"),
                      col=c("black", "red", "green", "blue"),
                      lty=1, cex=0.8)
@@ -237,33 +258,33 @@ for (iperf_arg in IPERF_SETTINGS) {
   #
   # Generate histogram
   #
-  xmin <- min(nativeControl$out_bound.delay,
-              containerMonitored$out_bound.delay,
-              nativeMonitored$out_bound.delay,
-              containerAdjusted$out_bound.delay)
-  xmax <- max(nativeControl$out_bound.delay,
-              containerMonitored$out_bound.delay,
-              nativeMonitored$out_bound.delay,
-              containerAdjusted$out_bound.delay)
-  mBreaks <- seq(xmin - 1, xmax + 1, 1)
+  # xmin <- min(nativeControl$out_bound.delay,
+  #             containerMonitored$out_bound.delay,
+  #             nativeMonitored$out_bound.delay,
+  #             containerAdjusted$out_bound.delay)
+  # xmax <- max(nativeControl$out_bound.delay,
+  #             containerMonitored$out_bound.delay,
+  #             nativeMonitored$out_bound.delay,
+  #             containerAdjusted$out_bound.delay)
+  # mBreaks <- seq(xmin - 1, xmax + 1, 1)
 
-  cat("Hist range:", xmin, xmax,"\n")
+  # cat("Hist range:", xmin, xmax,"\n")
 
-  pdf(file=paste(DATA_PATH,"hist_",iperf_arg,".pdf",sep=""), width=10,height=5)
-  controlRTTHist <- hist(nativeControl$out_bound.delay, breaks=mBreaks, plot=F)
-  containerRTTHist <- hist(containerMonitored$out_bound.delay, breaks=mBreaks, plot=F)
-  nativeMonitoredHist <- hist(nativeMonitored$out_bound.delay, breaks=mBreaks, plot=F)
-  containerAdjustedHist <- hist(containerAdjusted$out_bound.delay, breaks=mBreaks, plot=F)
-  yMax <- max(controlRTTHist$counts,
-              containerRTTHist$counts,
-              nativeMonitoredHist$counts,
-              containerAdjustedHist$counts)
-  plot(c(0,xmax), c(0,yMax), type="n")
-  lines(mBreaks[-1], controlRTTHist$counts, type="l", col="green")
-  lines(mBreaks[-1], containerRTTHist$counts, type="l", col="black")
-  lines(mBreaks[-1], nativeMonitoredHist$counts, type="l", col="blue")
-  lines(mBreaks[-1], containerAdjustedHist$counts, type="l", col="red")
-  dev.off()
+  # pdf(file=paste(DATA_PATH,"outbound_hist_",iperf_arg,".pdf",sep=""), width=10,height=5)
+  # controlRTTHist <- hist(nativeControl$out_bound.delay, breaks=mBreaks, plot=F)
+  # containerRTTHist <- hist(containerMonitored$out_bound.delay, breaks=mBreaks, plot=F)
+  # nativeMonitoredHist <- hist(nativeMonitored$out_bound.delay, breaks=mBreaks, plot=F)
+  # containerAdjustedHist <- hist(containerAdjusted$out_bound.delay, breaks=mBreaks, plot=F)
+  # yMax <- max(controlRTTHist$counts,
+  #             containerRTTHist$counts,
+  #             nativeMonitoredHist$counts,
+  #             containerAdjustedHist$counts)
+  # plot(c(0,xmax), c(0,yMax), type="n")
+  # lines(mBreaks[-1], controlRTTHist$counts, type="l", col="green")
+  # lines(mBreaks[-1], containerRTTHist$counts, type="l", col="black")
+  # lines(mBreaks[-1], nativeMonitoredHist$counts, type="l", col="blue")
+  # lines(mBreaks[-1], containerAdjustedHist$counts, type="l", col="red")
+  # dev.off()
 }
 
 cat("Native control\n")
@@ -288,9 +309,9 @@ yBounds <- c(min(nativeControls$mean - nativeControls$sd,
                  containerMonitoreds$mean + containerMonitoreds$sd,
                  containerControls$mean + containerControls$sd,
                  containerAdjusteds$mean + containerAdjusteds$sd))
-pdf(file=paste(DATA_PATH,"rtts_mean.pdf",sep=""), width=5, height=5)
+pdf(file=paste(DATA_PATH,"outbound_mean.pdf",sep=""), width=5, height=5)
 plot(nativeControls$mean, type="b", ylim=yBounds, col="green",
-     main="RTT Mean", xlab="traffic bandwidth", ylab="usec",
+     main="Out-bound Mean", xlab="traffic bandwidth", ylab="usec",
      xaxt="n",
      lty=3)
 drawArrows(nativeControls$mean, nativeControls$sd, "green")
@@ -326,9 +347,9 @@ yBounds <- c(min(nativeControls$mode - nativeControls$sd,
                  containerMonitoreds$mode + containerMonitoreds$sd,
                  containerControls$mode + containerControls$sd,
                  containerAdjusteds$mode + containerAdjusteds$sd))
-pdf(file=paste(DATA_PATH,"rtts_mode.pdf",sep=""), width=5, height=5)
+pdf(file=paste(DATA_PATH,"outbound_mode.pdf",sep=""), width=5, height=5)
 plot(nativeControls$mode, type="b", ylim=yBounds, col="green",
-     main="RTT Mode", xlab="traffic bandwidth", ylab="usec",
+     main="Out-bound Mode", xlab="traffic bandwidth", ylab="usec",
      xaxt="n",
      lty=3)
 drawArrows(nativeControls$mode, nativeControls$sd, "green")

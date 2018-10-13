@@ -16,6 +16,12 @@ SETTINGS <- scan(file=paste(DATA_PATH, "file_list", sep=""),
 
 print(SETTINGS)
 
+SIZES <- rep(c("16", "56", "120", "504", "1472"), 4)
+INTERVALS <- c("0.2", "0.3", "0.5", "1.0")
+
+print(SIZES)
+print(INTERVALS)
+
 #
 # Read and parse a dump from ping
 #
@@ -99,7 +105,7 @@ containerErrs <- t_an * containerSDs / sqrt(length(containerMeans))
 pdf(file=paste(DATA_PATH, "mean_summary.pdf", sep=""), width=10, height=5)
 yBounds <- c(min(nativeMeans - nativeErrs, containerMeans - containerErrs),
              max(nativeMeans + nativeErrs, containerMeans + containerErrs))
-par(mar=c(7,4,4,4))
+par(mar=c(7,7,4,4))
 plot(nativeMeans, type="p", ylim=yBounds, col="deeppink",
      main="RTT Mean Summary", xlab="", ylab="usec", xaxt="n")
 drawArrows(nativeMeans, nativeErrs, "deeppink")
@@ -107,10 +113,12 @@ drawArrows(nativeMeans, nativeErrs, "deeppink")
 lines(containerMeans, type="p", col="black")
 drawArrows(containerMeans, containerErrs, "black")
 
-axis(1, at=seq(1, length(SETTINGS), by=1), labels=SETTINGS, las=2)
-mtext("ping settings (i: interval in sec, s: payload size in bytes)", 1, 5)
+axis(1, at=seq(1, length(SIZES), by=1), labels=SIZES, las=2)
+mtext("payload (bytes)", 1, 1, at=-1)
+axis(1, at=seq(3, length(SIZES), by=5), labels=INTERVALS, line=3, lwd=0, lwd.ticks=0)
+mtext("interval (sec)", 1, 4, at=-1)
 legend("bottomright", legend=c("native", "container"),
-       col=c("deeppink", "black"), lty=1, cex=0.8)
+       col=c("deeppink", "black"), lty=1, cex=0.8, bg="white")
 dev.off()
 
 #
@@ -122,12 +130,17 @@ diffsErrors <- qt(a, df=length(diffs)-1) * diffsSDs / sqrt(length(diffs))
 
 pdf(file=paste(DATA_PATH, "mean_diff.pdf", sep=""), width=10, height=5)
 yBounds <- c(0, max(diffs + diffsErrors))
-par(mar=c(7,4,4,4))
+par(mar=c(7,7,4,4))
 barCenters <- barplot(diffs, main="RTT Mean Difference", ylim=yBounds,
-  xlab="", ylab="usec",
-  names.arg=SETTINGS, las=2)
+  xlab="", ylab="usec", las=2)
 drawArrowsCenters(diffs, diffsErrors, "black", barCenters)
-mtext("ping settings (i: interval in sec, s: payload size in bytes)", 1, 5)
+
+axis(1, at=barCenters, labels=SIZES, las=2)
+mtext("payload (bytes)", 1, 1, at=-2)
+axis(1, at=barCenters[seq(3, length(barCenters), by=5)],
+     labels=INTERVALS, line=3, lwd=0, lwd.ticks=0)
+mtext("interval (sec)", 1, 4, at=-1)
+
 dev.off()
 
 
@@ -137,7 +150,7 @@ dev.off()
 pdf(file=paste(DATA_PATH, "mode_summary.pdf", sep=""), width=10, height=5)
 yBounds <- c(min(nativeModes - nativeErrs, containerModes - containerErrs),
              max(nativeModes + nativeErrs, containerModes + containerErrs))
-par(mar=c(7,4,4,4))
+par(mar=c(7,7,4,4))
 plot(nativeModes, type="p", ylim=yBounds, col="deeppink",
      main="RTT Mode Summary", xlab="", ylab="usec", xaxt="n")
 drawArrows(nativeModes, nativeErrs, "deeppink")
@@ -145,10 +158,12 @@ drawArrows(nativeModes, nativeErrs, "deeppink")
 lines(containerModes, type="p", col="black")
 drawArrows(containerModes, containerErrs, "black")
 
-axis(1, at=seq(1, length(SETTINGS), by=1), labels=SETTINGS, las=2)
-mtext("ping settings (i: interval in sec, s: payload size in bytes)", 1, 5)
+axis(1, at=seq(1, length(SIZES), by=1), labels=SIZES, las=2)
+mtext("payload (bytes)", 1, 1, at=-1)
+axis(1, at=seq(3, length(SIZES), by=5), labels=INTERVALS, line=3, lwd=0, lwd.ticks=0)
+mtext("interval (sec)", 1, 4, at=-1)
 legend("bottomright", legend=c("native", "container"),
-       col=c("deeppink", "black"), lty=1, cex=0.8)
+       col=c("deeppink", "black"), lty=1, cex=0.8, bg="white")
 dev.off()
 
 
@@ -160,10 +175,13 @@ diffsSDs <- containerSDs + nativeSDs
 diffsErrors <- qt(a, df=length(diffs)-1) * diffsSDs / sqrt(length(diffs))
 pdf(file=paste(DATA_PATH, "mode_diff.pdf", sep=""), width=10, height=5)
 yBounds <- c(0, max(diffs + diffsErrors))
-par(mar=c(7,4,4,4))
+par(mar=c(7,7,4,4))
 barCenters <- barplot(diffs, main="RTT Mode Difference", ylim=yBounds,
-  xlab="", ylab="usec",
-  names.arg=SETTINGS, las=2)
+  xlab="", ylab="usec", las=2)
 drawArrowsCenters(diffs, diffsErrors, "black", barCenters)
-mtext("ping settings (i: interval in sec, s: payload size in bytes)", 1, 5)
+axis(1, at=barCenters, labels=SIZES, las=2)
+mtext("payload (bytes)", 1, 1, at=-2)
+axis(1, at=barCenters[seq(3, length(barCenters), by=5)],
+     labels=INTERVALS, line=3, lwd=0, lwd.ticks=0)
+mtext("interval (sec)", 1, 4, at=-1)
 dev.off()
