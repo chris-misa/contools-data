@@ -288,6 +288,7 @@ controlErrors <- t_an * controlSDs / sqrt(length(controlMeans))
 containerControlErrors <- t_an * containerControlSDs / sqrt(length(containerControlMeans))
 containerErrors <- t_an * containerSDs / sqrt(length(containerMeans))
 containerAdjErrors <- t_an * containerAdjSDs / sqrt(length(containerAdjMeans))
+nativeMonitoredErrors <- t_an * nativeMonitoredSDs / sqrt(length(nativeMonitoredMeans))
 
 #
 # Make and display a data frame
@@ -304,16 +305,17 @@ data <- data.frame(arg=IPERF_SETTINGS,
                    container_err=containerErrors,
                    raw_latency_mean=raw_latMeans,
                    raw_latency_sd=raw_latSDs,
-                   events_overhead_mean=events_overheadMeans,
-                   events_overhead_sd=events_overheadSDs,
                    native_monitored_mean=nativeMonitoredMeans,
                    native_monitored_sd=nativeMonitoredSDs,
+                   native_monitored_err=nativeMonitoredErrors,
                    container_adj_mean=containerAdjMeans,
                    container_adj_sd=containerAdjSDs,
                    container_adj_err=containerAdjErrors,
                    control_adj_diff=containerAdjMeans - controlMeans,
                    stringsAsFactors=F)
-data
+
+write.csv(data, file=paste(DATA_PATH,"Report_means.csv",sep=""))
+
 
 #
 # Generate graph of rtt measurements vs. traffic load
@@ -334,6 +336,7 @@ plot(data$control_mean, type="b", ylim=yBounds, col="green",
 drawArrows(data$control_mean, data$control_err, "green")
 if (!is.null(data$native_monitored_mean[[1]])) {
   lines(data$native_monitored_mean, type="b", col="blue", lty=2)
+  drawArrows(data$native_monitored_mean, data$native_monitored_err, "blue")
 }
 lines(data$container_mean, type="b", col="black", lty=1)
 drawArrows(data$container_mean, data$container_err, "black")

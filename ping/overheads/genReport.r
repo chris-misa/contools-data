@@ -107,16 +107,16 @@ yBounds <- c(min(nativeMeans - nativeErrs, containerMeans - containerErrs),
              max(nativeMeans + nativeErrs, containerMeans + containerErrs))
 par(mar=c(7,7,4,4))
 plot(nativeMeans, type="p", ylim=yBounds, col="deeppink",
-     main="RTT Mean Summary", xlab="", ylab="usec", xaxt="n")
+     main="", xlab="", ylab=expression(paste(mu,"s")), xaxt="n")
 drawArrows(nativeMeans, nativeErrs, "deeppink")
 
 lines(containerMeans, type="p", col="black")
 drawArrows(containerMeans, containerErrs, "black")
 
 axis(1, at=seq(1, length(SIZES), by=1), labels=SIZES, las=2)
-mtext("payload (bytes)", 1, 1, at=-1)
+mtext("payload (b)", 1, 1, at=-1)
 axis(1, at=seq(3, length(SIZES), by=5), labels=INTERVALS, line=3, lwd=0, lwd.ticks=0)
-mtext("interval (sec)", 1, 4, at=-1)
+mtext("interval (s)", 1, 4, at=-1)
 legend("bottomright", legend=c("native", "container"),
        col=c("deeppink", "black"), lty=1, cex=0.8, bg="white")
 dev.off()
@@ -131,15 +131,15 @@ diffsErrors <- qt(a, df=length(diffs)-1) * diffsSDs / sqrt(length(diffs))
 pdf(file=paste(DATA_PATH, "mean_diff.pdf", sep=""), width=10, height=5)
 yBounds <- c(0, max(diffs + diffsErrors))
 par(mar=c(7,7,4,4))
-barCenters <- barplot(diffs, main="RTT Mean Difference", ylim=yBounds,
-  xlab="", ylab="usec", las=2)
+barCenters <- barplot(diffs, main="", ylim=yBounds,
+  xlab="", ylab=expression(paste(mu,"s")), las=2)
 drawArrowsCenters(diffs, diffsErrors, "black", barCenters)
 
 axis(1, at=barCenters, labels=SIZES, las=2)
-mtext("payload (bytes)", 1, 1, at=-2)
+mtext("payload (b)", 1, 1, at=-2)
 axis(1, at=barCenters[seq(3, length(barCenters), by=5)],
      labels=INTERVALS, line=3, lwd=0, lwd.ticks=0)
-mtext("interval (sec)", 1, 4, at=-1)
+mtext("interval (s)", 1, 4, at=-1)
 
 dev.off()
 
@@ -152,16 +152,16 @@ yBounds <- c(min(nativeModes - nativeErrs, containerModes - containerErrs),
              max(nativeModes + nativeErrs, containerModes + containerErrs))
 par(mar=c(7,7,4,4))
 plot(nativeModes, type="p", ylim=yBounds, col="deeppink",
-     main="RTT Mode Summary", xlab="", ylab="usec", xaxt="n")
+     main="", xlab="", ylab=expression(paste(mu,"s")), xaxt="n")
 drawArrows(nativeModes, nativeErrs, "deeppink")
 
 lines(containerModes, type="p", col="black")
 drawArrows(containerModes, containerErrs, "black")
 
 axis(1, at=seq(1, length(SIZES), by=1), labels=SIZES, las=2)
-mtext("payload (bytes)", 1, 1, at=-1)
+mtext("payload (b)", 1, 1, at=-1)
 axis(1, at=seq(3, length(SIZES), by=5), labels=INTERVALS, line=3, lwd=0, lwd.ticks=0)
-mtext("interval (sec)", 1, 4, at=-1)
+mtext("interval (s)", 1, 4, at=-1)
 legend("bottomright", legend=c("native", "container"),
        col=c("deeppink", "black"), lty=1, cex=0.8, bg="white")
 dev.off()
@@ -176,12 +176,12 @@ diffsErrors <- qt(a, df=length(diffs)-1) * diffsSDs / sqrt(length(diffs))
 pdf(file=paste(DATA_PATH, "mode_diff.pdf", sep=""), width=10, height=5)
 yBounds <- c(0, max(diffs + diffsErrors))
 par(mar=c(7,7,4,4))
-barCenters <- barplot(diffs, main="RTT Mode Difference", ylim=yBounds,
-  xlab="", ylab="usec", las=2)
+barCenters <- barplot(diffs, main="", ylim=yBounds,
+  xlab="", ylab=expression(paste(mu,"s")), las=2)
 drawArrowsCenters(diffs, diffsErrors, "black", barCenters)
 axis(1, at=barCenters, labels=SIZES, las=2)
-mtext("payload (bytes)", 1, 1, at=-2)
+mtext("payload (b)", 1, 1, at=-2)
 axis(1, at=barCenters[seq(3, length(barCenters), by=5)],
      labels=INTERVALS, line=3, lwd=0, lwd.ticks=0)
-mtext("interval (sec)", 1, 4, at=-1)
+mtext("interval (s)", 1, 4, at=-1)
 dev.off()
